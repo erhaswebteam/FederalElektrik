@@ -1,0 +1,36 @@
+﻿@model List<CustomerProductQuotaModel>
+@{
+    Layout = "_ColumnsTwo";
+    //title
+    Html.AddTitleParts("Ürün Kotalarım");
+}
+@section left
+    {
+    @await Component.InvokeAsync("CustomerNavigation", new { selectedTabId = CustomerNavigationEnum.ProductQuota })
+}
+<div class="col-lg-9 col-md-12 generalSideRight pl-0 pr-0">
+    <section class="page account-page reward-points-page" style="padding: 15px !important;">
+        <h1 class="h2 generalTitle">Hesabım - Ürün Kotalarım</h1>
+        <div class="reward-points-history">
+            <p style="font-weight:bold;">Aşağıdaki bilgi, hangi üründen kaç adet alabileceğinizi göstermektedir.</p>
+            @if (Model.Count > 0)
+            {
+                <table class="table">
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td><a href="/@item.NameSurname" target="_blank">@item.ProductName</a></td>
+                            <td><strong>@item.Quota</strong></td>
+                        </tr>
+                    }
+                </table>
+            }
+        </div>
+    </section>
+</div>
+
+
+
+
+
+

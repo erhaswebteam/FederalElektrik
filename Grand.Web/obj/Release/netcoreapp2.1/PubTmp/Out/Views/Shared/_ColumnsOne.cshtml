@@ -1,0 +1,25 @@
+﻿@{
+    Layout = "_Root";
+}
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-136058587-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-136058587-1');
+</script>
+@if (IsSectionDefined("Breadcrumb"))
+{
+    @section Breadcrumb {
+        @RenderSection("Breadcrumb")
+    }
+}
+@if (IsSectionDefined("filters"))
+{
+    @RenderSection("filters")
+}
+@await Component.InvokeAsync("Widget", new { widgetZone = "main_column_before" })
+@RenderBody()
+@await Component.InvokeAsync("Widget", new { widgetZone = "main_column_after" })

@@ -1,0 +1,22 @@
+@media (max-width: 991px) {
+  footer .step-title {
+    border: none;
+    border-radius: 0.25rem;
+    background: $renkss-2;
+    color: #fff;
+  }
+
+  footer .viewBox {
+    padding: 0 15px;
+  }
+
+  .navUp {
+    .nav-link .fa, .nav-link .far {
+      color: #fff;
+    }
+
+    .text-muted {
+      color: #fff !important;
+    }
+  }
+}

@@ -1,0 +1,11 @@
+E:\PROJELER\Prometeon\Solution-Original\Plugins\Grand.Plugin.Payment.IPara\bin\Release\netcoreapp2.1\Description.txt
+E:\PROJELER\Prometeon\Solution-Original\Plugins\Grand.Plugin.Payment.IPara\bin\Release\netcoreapp2.1\Grand.Plugin.Payments.IPara.deps.json
+E:\PROJELER\Prometeon\Solution-Original\Plugins\Grand.Plugin.Payment.IPara\bin\Release\netcoreapp2.1\Grand.Plugin.Payments.IPara.dll
+E:\PROJELER\Prometeon\Solution-Original\Plugins\Grand.Plugin.Payment.IPara\bin\Release\netcoreapp2.1\Grand.Plugin.Payments.IPara.pdb
+E:\PROJELER\Prometeon\Solution-Original\Plugins\Grand.Plugin.Payment.IPara\obj\Release\netcoreapp2.1\Grand.Plugin.Payments.IPara.csproj.AssemblyReference.cache
+E:\PROJELER\Prometeon\Solution-Original\Plugins\Grand.Plugin.Payment.IPara\obj\Release\netcoreapp2.1\Grand.Plugin.Payments.IPara.GeneratedMSBuildEditorConfig.editorconfig
+E:\PROJELER\Prometeon\Solution-Original\Plugins\Grand.Plugin.Payment.IPara\obj\Release\netcoreapp2.1\Grand.Plugin.Payments.IPara.AssemblyInfoInputs.cache
+E:\PROJELER\Prometeon\Solution-Original\Plugins\Grand.Plugin.Payment.IPara\obj\Release\netcoreapp2.1\Grand.Plugin.Payments.IPara.AssemblyInfo.cs
+E:\PROJELER\Prometeon\Solution-Original\Plugins\Grand.Plugin.Payment.IPara\obj\Release\netcoreapp2.1\Grand.Plugin.Payments.IPara.csproj.CoreCompileInputs.cache
+E:\PROJELER\Prometeon\Solution-Original\Plugins\Grand.Plugin.Payment.IPara\obj\Release\netcoreapp2.1\Grand.Plugin.Payments.IPara.dll
+E:\PROJELER\Prometeon\Solution-Original\Plugins\Grand.Plugin.Payment.IPara\obj\Release\netcoreapp2.1\Grand.Plugin.Payments.IPara.pdb

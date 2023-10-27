@@ -1,0 +1,125 @@
+﻿@using Grand.Plugin.Payments.PaymentOptions.Models;
+@using System.Web;
+
+@model PaymentOptionModel;
+
+@{
+    Layout = "";
+}
+@if (Model.PaymentStatus == (int)PaymentStatusTypeEnum.Odeme_Basarisiz)
+{
+    <p class="alert alert-danger">@Html.Raw(HttpUtility.HtmlDecode(Model.Msg))</p>
+}
+<form role="form" method="post">
+    <div class="form-group">
+        <label for="username">Kart Sahibi Ad Soyad</label>
+        @Html.TextBoxFor(m => m.CardNameSurname, new { @class = "form-control" })
+        @*<input type="text" class="form-control" name="username" placeholder="" required="">*@
+    </div> <!-- form-group.// -->
+    <div class="form-group">
+        <label for="cardNumber">Kart Numarası</label>
+        <div class="input-group">
+            @Html.TextBoxFor(m => m.CardNumber, new { @class = "form-control", onkeypress = "validate(event)", maxlength = "16" })
+            @*<input type="text" class="form-control" maxlength="16" name="cardNumber" placeholder="" onkeypress="validate(event)">*@
+            <div class="input-group-append">
+                <span class="input-group-text text-muted">
+                    <i class="fab fa-cc-visa"></i>   <i class="fab fa-cc-amex"></i>
+                    <i class="fab fa-cc-mastercard"></i>
+                </span>
+            </div>
+        </div>
+    </div> <!-- form-group.// -->
+    <div class="row">
+        <div class="col-sm-8">
+            <div class="form-group">
+                <label><span class="hidden-xs">Son Kullanım Tarihleri</span> </label>
+                <div class="form-inline">
+                    <select id="CardMonth" name="CardMonth" class="form-control" style="width:45%">
+                        <option>Ay</option>
+                        <option value="01">01</option>
+                        <option value="02">02</option>
+                        <option value="03">03</option>
+                        <option value="04">04</option>
+                        <option value="05">05</option>
+                        <option value="06">06</option>
+                        <option value="07">07</option>
+                        <option value="08">08</option>
+                        <option value="09">09</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                    </select>
+                    <span style="width:10%; text-align: center"> / </span>
+                    <select id="CardYear" name="CardYear" class="form-control" style="width:45%">
+                        <option>Yıl</option>
+                        <option value="19">2019</option>
+                        <option value="20">2020</option>
+                        <option value="21">2021</option>
+                        <option value="22">2022</option>
+                        <option value="23">2023</option>
+                        <option value="24">2024</option>
+                        <option value="25">2025</option>
+                        <option value="26">2026</option>
+                        <option value="27">2028</option>
+                        <option value="28">2028</option>
+                        <option value="29">2029</option>
+                        <option value="30">2030</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="form-group">
+                <label data-toggle="tooltip" title="Kartınızın arkasındaki son 3 rakam" data-original-title="Kartınızın arkasındaki son 3 rakam">CVV</label>
+                @Html.TextBoxFor(m => m.CardCvv, new { @class = "form-control", onkeypress = "validate(event)", maxlength = "3" })
+                @*<input type="text" class="form-control" onkeypress="validate(event)" maxlength="3" required="">*@
+            </div> <!-- form-group.// -->
+        </div>
+        <div class="col-sm-12">
+            <div class="form-group">
+                <div class="form-inline">
+                    <br />
+                    <br />
+                    <div class="col-sm-4">
+                        <button formmethod="post" formaction="@Url.Action("CancelOrder")" class="subscribe btn btn-primary btn-block" type="submit">İptal Et</button>
+                    </div>
+                    <div class="col-sm-8">
+                        <button class="subscribe btn btn-primary btn-block" type="submit">( @Model.TotalDebit.ToString() TL ) Ödeme Yap</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div> <!-- row.// -->
+    @Html.HiddenFor(Model => Model.TotalDebit)
+    @Html.HiddenFor(Model => Model.OrderNumber)
+</form>
+@*<div class="tab-pane fade" id="nav-tab-paypal">
+        <p>Paypal is easiest way to pay online</p>
+        <p>
+            <button type="button" class="btn btn-primary"> <i class="fab fa-paypal"></i> Log in my Paypal </button>
+        </p>
+        <p>
+            <strong>Note:</strong> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua.
+        </p>
+    </div>*@
+@*<div class="tab-pane fade" id="nav-tab-bank">
+        <p>Bank accaunt details</p>
+        <dl class="param">
+            <dt>BANK: </dt>
+            <dd> THE WORLD BANK</dd>
+        </dl>
+        <dl class="param">
+            <dt>Accaunt number: </dt>
+            <dd> 12345678912345</dd>
+        </dl>
+        <dl class="param">
+            <dt>IBAN: </dt>
+            <dd> 123456789</dd>
+        </dl>
+        <p>
+            <strong>Note:</strong> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua.
+        </p>
+    </div>*@ <!-- tab-pane.// -->

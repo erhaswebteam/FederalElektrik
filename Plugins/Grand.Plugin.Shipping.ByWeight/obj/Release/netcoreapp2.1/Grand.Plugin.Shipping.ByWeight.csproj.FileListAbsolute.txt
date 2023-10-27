@@ -1,0 +1,17 @@
+E:\PROJELER\Prometeon\Solution-Original\Grand.Web\Plugins\Shipping.ByWeight\Views\_ViewImports.cshtml
+E:\PROJELER\Prometeon\Solution-Original\Grand.Web\Plugins\Shipping.ByWeight\Views\AddPopup.cshtml
+E:\PROJELER\Prometeon\Solution-Original\Grand.Web\Plugins\Shipping.ByWeight\Views\Configure.cshtml
+E:\PROJELER\Prometeon\Solution-Original\Grand.Web\Plugins\Shipping.ByWeight\Views\EditPopup.cshtml
+E:\PROJELER\Prometeon\Solution-Original\Grand.Web\Plugins\Shipping.ByWeight\Views\_CreateOrUpdate.cshtml
+E:\PROJELER\Prometeon\Solution-Original\Grand.Web\Plugins\Shipping.ByWeight\Description.txt
+E:\PROJELER\Prometeon\Solution-Original\Grand.Web\Plugins\Shipping.ByWeight\logo.jpg
+E:\PROJELER\Prometeon\Solution-Original\Grand.Web\Plugins\Shipping.ByWeight\Grand.Plugin.Shipping.ByWeight.deps.json
+E:\PROJELER\Prometeon\Solution-Original\Grand.Web\Plugins\Shipping.ByWeight\Grand.Plugin.Shipping.ByWeight.dll
+E:\PROJELER\Prometeon\Solution-Original\Grand.Web\Plugins\Shipping.ByWeight\Grand.Plugin.Shipping.ByWeight.pdb
+E:\PROJELER\Prometeon\Solution-Original\Plugins\Grand.Plugin.Shipping.ByWeight\obj\Release\netcoreapp2.1\Grand.Plugin.Shipping.ByWeight.csproj.AssemblyReference.cache
+E:\PROJELER\Prometeon\Solution-Original\Plugins\Grand.Plugin.Shipping.ByWeight\obj\Release\netcoreapp2.1\Grand.Plugin.Shipping.ByWeight.GeneratedMSBuildEditorConfig.editorconfig
+E:\PROJELER\Prometeon\Solution-Original\Plugins\Grand.Plugin.Shipping.ByWeight\obj\Release\netcoreapp2.1\Grand.Plugin.Shipping.ByWeight.AssemblyInfoInputs.cache
+E:\PROJELER\Prometeon\Solution-Original\Plugins\Grand.Plugin.Shipping.ByWeight\obj\Release\netcoreapp2.1\Grand.Plugin.Shipping.ByWeight.AssemblyInfo.cs
+E:\PROJELER\Prometeon\Solution-Original\Plugins\Grand.Plugin.Shipping.ByWeight\obj\Release\netcoreapp2.1\Grand.Plugin.Shipping.ByWeight.csproj.CoreCompileInputs.cache
+E:\PROJELER\Prometeon\Solution-Original\Plugins\Grand.Plugin.Shipping.ByWeight\obj\Release\netcoreapp2.1\Grand.Plugin.Shipping.ByWeight.dll
+E:\PROJELER\Prometeon\Solution-Original\Plugins\Grand.Plugin.Shipping.ByWeight\obj\Release\netcoreapp2.1\Grand.Plugin.Shipping.ByWeight.pdb

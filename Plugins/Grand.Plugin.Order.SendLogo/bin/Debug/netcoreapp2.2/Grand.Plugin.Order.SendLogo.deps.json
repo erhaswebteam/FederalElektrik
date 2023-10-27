@@ -1,0 +1,95 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v2.2",
+    "signature": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v2.2": {
+      "Grand.Plugin.Order.SendLogo/1.0.0": {
+        "dependencies": {
+          "Grand.Core": "1.0.0.0",
+          "Grand.Data": "1.0.0.0",
+          "Grand.Framework": "1.0.0.0",
+          "Grand.Services": "1.0.0.0",
+          "Grand.Web": "1.0.0.0"
+        },
+        "runtime": {
+          "Grand.Plugin.Order.SendLogo.dll": {}
+        }
+      },
+      "Grand.Core/1.0.0.0": {
+        "runtime": {
+          "Grand.Core.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Grand.Data/1.0.0.0": {
+        "runtime": {
+          "Grand.Data.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Grand.Framework/1.0.0.0": {
+        "runtime": {
+          "Grand.Framework.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Grand.Services/1.0.0.0": {
+        "runtime": {
+          "Grand.Services.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Grand.Web/1.0.0.0": {
+        "runtime": {
+          "Grand.Web.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Grand.Plugin.Order.SendLogo/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Grand.Core/1.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Grand.Data/1.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Grand.Framework/1.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Grand.Services/1.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Grand.Web/1.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

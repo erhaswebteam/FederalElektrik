@@ -1,0 +1,15 @@
+E:\PROJELER\Prometeon\Solution-Original\Grand.Web\Plugins\Payments.PayInStore\Views\_ViewImports.cshtml
+E:\PROJELER\Prometeon\Solution-Original\Grand.Web\Plugins\Payments.PayInStore\Views\Configure.cshtml
+E:\PROJELER\Prometeon\Solution-Original\Grand.Web\Plugins\Payments.PayInStore\Views\PaymentInfo.cshtml
+E:\PROJELER\Prometeon\Solution-Original\Grand.Web\Plugins\Payments.PayInStore\Description.txt
+E:\PROJELER\Prometeon\Solution-Original\Grand.Web\Plugins\Payments.PayInStore\logo.jpg
+E:\PROJELER\Prometeon\Solution-Original\Grand.Web\Plugins\Payments.PayInStore\Grand.Plugin.Payments.PayInStore.deps.json
+E:\PROJELER\Prometeon\Solution-Original\Grand.Web\Plugins\Payments.PayInStore\Grand.Plugin.Payments.PayInStore.dll
+E:\PROJELER\Prometeon\Solution-Original\Grand.Web\Plugins\Payments.PayInStore\Grand.Plugin.Payments.PayInStore.pdb
+E:\PROJELER\Prometeon\Solution-Original\Plugins\Grand.Plugin.Payments.PayInStore\obj\Release\netcoreapp2.1\Grand.Plugin.Payments.PayInStore.csproj.AssemblyReference.cache
+E:\PROJELER\Prometeon\Solution-Original\Plugins\Grand.Plugin.Payments.PayInStore\obj\Release\netcoreapp2.1\Grand.Plugin.Payments.PayInStore.GeneratedMSBuildEditorConfig.editorconfig
+E:\PROJELER\Prometeon\Solution-Original\Plugins\Grand.Plugin.Payments.PayInStore\obj\Release\netcoreapp2.1\Grand.Plugin.Payments.PayInStore.AssemblyInfoInputs.cache
+E:\PROJELER\Prometeon\Solution-Original\Plugins\Grand.Plugin.Payments.PayInStore\obj\Release\netcoreapp2.1\Grand.Plugin.Payments.PayInStore.AssemblyInfo.cs
+E:\PROJELER\Prometeon\Solution-Original\Plugins\Grand.Plugin.Payments.PayInStore\obj\Release\netcoreapp2.1\Grand.Plugin.Payments.PayInStore.csproj.CoreCompileInputs.cache
+E:\PROJELER\Prometeon\Solution-Original\Plugins\Grand.Plugin.Payments.PayInStore\obj\Release\netcoreapp2.1\Grand.Plugin.Payments.PayInStore.dll
+E:\PROJELER\Prometeon\Solution-Original\Plugins\Grand.Plugin.Payments.PayInStore\obj\Release\netcoreapp2.1\Grand.Plugin.Payments.PayInStore.pdb

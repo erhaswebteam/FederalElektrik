@@ -1,0 +1,17 @@
+E:\PROJELER\Prometeon\Solution-Original\Grand.Web\Plugins\Widgets.Slider\Views\_ViewImports.cshtml
+E:\PROJELER\Prometeon\Solution-Original\Grand.Web\Plugins\Widgets.Slider\Content\slider\sample-images\banner1.jpg
+E:\PROJELER\Prometeon\Solution-Original\Grand.Web\Plugins\Widgets.Slider\Content\slider\sample-images\banner2.jpg
+E:\PROJELER\Prometeon\Solution-Original\Grand.Web\Plugins\Widgets.Slider\logo.jpg
+E:\PROJELER\Prometeon\Solution-Original\Grand.Web\Plugins\Widgets.Slider\Views\Configure.cshtml
+E:\PROJELER\Prometeon\Solution-Original\Grand.Web\Plugins\Widgets.Slider\Views\PublicInfo.cshtml
+E:\PROJELER\Prometeon\Solution-Original\Grand.Web\Plugins\Widgets.Slider\Description.txt
+E:\PROJELER\Prometeon\Solution-Original\Grand.Web\Plugins\Widgets.Slider\Grand.Plugin.Widgets.Slider.deps.json
+E:\PROJELER\Prometeon\Solution-Original\Grand.Web\Plugins\Widgets.Slider\Grand.Plugin.Widgets.Slider.dll
+E:\PROJELER\Prometeon\Solution-Original\Grand.Web\Plugins\Widgets.Slider\Grand.Plugin.Widgets.Slider.pdb
+E:\PROJELER\Prometeon\Solution-Original\Plugins\Grand.Plugin.Widgets.Slider\obj\Release\netcoreapp2.1\Grand.Plugin.Widgets.Slider.csproj.AssemblyReference.cache
+E:\PROJELER\Prometeon\Solution-Original\Plugins\Grand.Plugin.Widgets.Slider\obj\Release\netcoreapp2.1\Grand.Plugin.Widgets.Slider.GeneratedMSBuildEditorConfig.editorconfig
+E:\PROJELER\Prometeon\Solution-Original\Plugins\Grand.Plugin.Widgets.Slider\obj\Release\netcoreapp2.1\Grand.Plugin.Widgets.Slider.AssemblyInfoInputs.cache
+E:\PROJELER\Prometeon\Solution-Original\Plugins\Grand.Plugin.Widgets.Slider\obj\Release\netcoreapp2.1\Grand.Plugin.Widgets.Slider.AssemblyInfo.cs
+E:\PROJELER\Prometeon\Solution-Original\Plugins\Grand.Plugin.Widgets.Slider\obj\Release\netcoreapp2.1\Grand.Plugin.Widgets.Slider.csproj.CoreCompileInputs.cache
+E:\PROJELER\Prometeon\Solution-Original\Plugins\Grand.Plugin.Widgets.Slider\obj\Release\netcoreapp2.1\Grand.Plugin.Widgets.Slider.dll
+E:\PROJELER\Prometeon\Solution-Original\Plugins\Grand.Plugin.Widgets.Slider\obj\Release\netcoreapp2.1\Grand.Plugin.Widgets.Slider.pdb

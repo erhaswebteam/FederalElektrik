@@ -1,0 +1,166 @@
+﻿@model CheckoutPaymentMethodModel
+@inject Grand.Services.Catalog.IProductService productService
+@inject Grand.Services.Tax.ITaxService taxService
+@inject IWebHelper webHelper;
+@inject IWorkContext _workContext;
+@await Component.InvokeAsync("Widget", new { widgetZone = "op_checkout_payment_method_top" })
+@{
+    var storeLocation = webHelper.GetStoreLocation();
+    int BuyTotal = 0;
+    decimal tempDebit = 0;
+    var cheque = Model.Warnings.Any(x => x == "AlisverisCeki");
+    if (Model.CustomerMoney >= Model.TotalPoint)
+    {
+        BuyTotal = Model.TotalPoint;
+    }
+    else
+    {
+        BuyTotal = Model.CustomerMoney;
+        decimal cardPayment = Model.TotalPoint - Model.CustomerMoney;
+        tempDebit = cardPayment / Model.MoneyPointFactor;
+    }
+}
+<!-- Cart modal --><!--YENİ STOK KONTROLÜ-->
+<div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="cartModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document" style="max-width:75%!important">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Alışveriş Sepeti</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="mt-4 mb-4" id="errorContainer"></div>
+            <div id="cartContainer"></div>
+        </div>
+    </div>
+</div>
+<div class="payment-method">
+
+    @if (Model.CustomerMoney >= Model.TotalPoint)
+    {
+        <div class="list-inline col-12 mt-2 mb-2 px-0" id="payment-method-block">
+            <div class="col-12 method-name px-0">
+                <div class="col-12">
+                    <h5>Puan İle Ödeme</h5>
+                    <p>
+                        Sipariş tutarının tamamı, Puan ile ödenecektir.<br />
+                    </p>
+                    <hr />
+                    <div>
+                        <p class="col-6" style="border: 1px solid #cccccc; background-color: #ebebeb; padding: 3px;">Sipariş Toplamı : <strong>@string.Format("{0:0,0}", Model.TotalPoint) Puan</strong></p>
+                        <p class="col-6" style="border: 1px solid #cccccc; background-color: #ebebeb; padding: 3px;">Düşülecek Puan : <strong>@string.Format("{0:0,0}", BuyTotal) Puan</strong></p>
+                        <p class="col-6" style="border: 1px solid #cccccc; background-color: #ebebeb; padding: 3px;">Kartla Ödenecek Tutar : <strong>0 TL</strong></p>
+                        <div>
+                            <input id="paymentmethod_1" type="range" name="paymentPoint" min="0" max="@string.Format("{0:0.00}", BuyTotal).Replace(",",".")" step="0" value="@string.Format("{0:0.00}", BuyTotal).Replace(",",".")" style="display:inline-block; visibility:hidden">
+                            <input id="paymentmethod_2" type="radio" name="paymentmethod" value="Payments.PaymentOptions" checked="Payments.PaymentOptions" style="visibility:hidden">
+                        </div>
+
+                        @*<strong>Puanla Ödenen : @Model.TotalPoint BizPuan</strong><br />
+                            <strong>Kredi Kartı : 0 TL</strong><br />
+                            <strong style="font-size:20px;">0</strong><input id="paymentmethod_1" type="range" name="paymentPoint" min="0" max="@BuyTotal.ToString().Replace(",",".")" step="0.01" onchange="CheckValue()" value="@BuyTotal.ToString().Replace(",",".")" style="display:inline-block;"><strong style="font-size:20px;">@BuyTotal.ToString().Replace(",", ".") </strong><input id="range_input" type="text" value="@BuyTotal.ToString().Replace(",",".")" onkeyup="ChangeRange()" />
+                            <input id="paymentmethod_2" type="radio" name="paymentmethod" value="Rewards.RewardOperations" checked="Rewards.RewardOperations" style="visibility:hidden">
+
+                            <center><label id="range_value_label" class="font-weight-bold"></label></center>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    else if (!cheque)
+    {
+        <div class="list-inline col-12 mt-2 mb-2 px-0" id="payment-method-block">
+            <div class="col-12 method-name px-0">
+                <div class="col-12">
+                    <h5>Puan ve Kart İle Ödeme</h5>
+                    <p>
+                        Siparişinizdeki tutar yetersiz olduğu için belirtilen kısmı Puanınızdan düşülecek ve kalan tutar kredi kartı seçeneği ile alınacaktır.<br />
+                        Siparişiniz onayı sonrasında, kart ödeme sayfasına yönlendirileceksiniz.
+                    </p>
+                    <hr />
+                    <div>
+                        <p class="col-6" style="border: 1px solid #cccccc; background-color: #ebebeb; padding: 3px;">Sipariş Toplamı : <strong>@string.Format("{0:0,0}", Model.TotalPoint) Puan</strong></p>
+                        <p class="col-6" style="border: 1px solid #cccccc; background-color: #ebebeb; padding: 3px;">Düşülecek Puan : <strong>@string.Format("{0:0,0}", BuyTotal) Puan</strong></p>
+                        <p class="col-6" style="border: 1px solid #cccccc; background-color: #ebebeb; padding: 3px;">Kartla Ödenecek Tutar : <strong>@string.Format("{0:0.00}", tempDebit) TL</strong></p>
+                        <div>
+                            <input id="paymentmethod_1" type="range" name="paymentPoint" min="0" max="@string.Format("{0:0.00}", BuyTotal).Replace(",",".")" step="0" value="@string.Format("{0:0.00}", BuyTotal).Replace(",",".")" style="display:inline-block; visibility:hidden">
+                            <input id="paymentmethod_2" type="radio" name="paymentmethod" value="Payments.PaymentOptions" checked="Payments.PaymentOptions" style="visibility:hidden">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    @if (Model.CustomerMoney < Model.TotalPoint && cheque)
+    {
+        <div class="col-12">
+            <h5>Puan İle Ödeme</h5>
+            <p>
+                Puanınız bu alışveriş için yeterli değildir.
+            </p>
+            <hr />
+            <div>
+                <p class="col-6" style="border: 1px solid #cccccc; background-color: #ebebeb; padding: 3px;">Sipariş Toplamı : <strong>@string.Format("{0:0,0}", Model.TotalPoint) Puan</strong></p>
+                <p class="col-6" style="border: 1px solid #cccccc; background-color: #ebebeb; padding: 3px;">Düşülecek Puan : <strong>@string.Format("{0:0,0}", BuyTotal) Puan</strong></p>
+            </div>
+        </div>
+    }
+
+</div>
+
+@await Component.InvokeAsync("Widget", new { widgetZone = "op_checkout_confirm_top" })
+@await Component.InvokeAsync("Widget", new { widgetZone = "op_checkout_confirm_bottom" })
+<div class="col-12">
+    <div class="modal fade" id="terms-of-service-warning-box" tabindex="-1" title="@T("Checkout.TermsOfService")" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="display:none;">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>@T("Checkout.TermsOfService.PleaseAccept")</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    @if (Model.CustomerMoney < Model.TotalPoint && cheque)
+    {
+
+    }
+    else
+    {
+        <div class="terms-of-service">
+            <label class="custom-control custom-checkbox">
+                <input type="checkbox" id="termsofservice" name="termsofservice" onclick="PaymentMethod.save();" class="custom-control-input">
+                <span class="custom-control-label"></span>
+                @*<span class="custom-control-description">@T("Checkout.TermsOfService.IAccept") </span>*@
+                @*<br /><span class="custom-control-description"></span>*@
+
+                <a class="read" onclick="javascript:OpenWindow('@Url.RouteUrl("TopicPopup", new { SystemName = "OnBilgilendirmeFormu" })', 450, 500, true)">Ön Bilgilendirme Formunu</a> &nbsp;&nbsp;ve <a class="read" onclick="javascript:OpenWindow('@Url.RouteUrl("TopicPopup", new { SystemName = "MesafeliSatisSozlesmesi" })', 450, 500, true)">Mesafeli Satış Sözleşmesini</a> okudum ve onaylıyorum.
+            </label>
+        </div>
+    }
+
+</div>
+
+
+<script>
+                    PaymentMethod.init('#co-payment-method-form', '@(storeLocation)checkout/OpcSavePaymentMethod/');
+                        ConfirmOrder.init('@(storeLocation)checkout/OpcConfirmOrder/', '@(storeLocation)checkout/completed/');
+</script>
+@if (Model.CustomerMoney < Model.TotalPoint && cheque)
+{
+
+}
+else
+{
+    <div class="col-12 buttons pt-1 pb-1 px-0 my-3" id="confirm-order-buttons-container">
+        <a class="btn btn-secondary" href="#" onclick="Checkout.back(); return false;">@T("Common.Back")</a>
+        <input type="button" class="btn btn-info confirm-order-next-step-button" onclick="ConfirmOrder.save();" value="@T("Common.Confirm")" />
+        <span class="please-wait" id="confirm-order-please-wait" style="display: none;">@T("Checkout.SubmittingOrder")</span>
+    </div>
+}
+
+@await Component.InvokeAsync("Widget", new { widgetZone = "op_checkout_payment_method_bottom" })

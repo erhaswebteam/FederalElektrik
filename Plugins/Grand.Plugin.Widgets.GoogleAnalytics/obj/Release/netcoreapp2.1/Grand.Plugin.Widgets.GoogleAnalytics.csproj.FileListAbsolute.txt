@@ -1,0 +1,15 @@
+E:\PROJELER\Prometeon\Solution-Original\Grand.Web\Plugins\Widgets.GoogleAnalytics\Description.txt
+E:\PROJELER\Prometeon\Solution-Original\Grand.Web\Plugins\Widgets.GoogleAnalytics\logo.jpg
+E:\PROJELER\Prometeon\Solution-Original\Grand.Web\Plugins\Widgets.GoogleAnalytics\Views\Configure.cshtml
+E:\PROJELER\Prometeon\Solution-Original\Grand.Web\Plugins\Widgets.GoogleAnalytics\Views\PublicInfo.cshtml
+E:\PROJELER\Prometeon\Solution-Original\Grand.Web\Plugins\Widgets.GoogleAnalytics\Views\_ViewImports.cshtml
+E:\PROJELER\Prometeon\Solution-Original\Grand.Web\Plugins\Widgets.GoogleAnalytics\Grand.Plugin.Widgets.GoogleAnalytics.deps.json
+E:\PROJELER\Prometeon\Solution-Original\Grand.Web\Plugins\Widgets.GoogleAnalytics\Grand.Plugin.Widgets.GoogleAnalytics.dll
+E:\PROJELER\Prometeon\Solution-Original\Grand.Web\Plugins\Widgets.GoogleAnalytics\Grand.Plugin.Widgets.GoogleAnalytics.pdb
+E:\PROJELER\Prometeon\Solution-Original\Plugins\Grand.Plugin.Widgets.GoogleAnalytics\obj\Release\netcoreapp2.1\Grand.Plugin.Widgets.GoogleAnalytics.csproj.AssemblyReference.cache
+E:\PROJELER\Prometeon\Solution-Original\Plugins\Grand.Plugin.Widgets.GoogleAnalytics\obj\Release\netcoreapp2.1\Grand.Plugin.Widgets.GoogleAnalytics.GeneratedMSBuildEditorConfig.editorconfig
+E:\PROJELER\Prometeon\Solution-Original\Plugins\Grand.Plugin.Widgets.GoogleAnalytics\obj\Release\netcoreapp2.1\Grand.Plugin.Widgets.GoogleAnalytics.AssemblyInfoInputs.cache
+E:\PROJELER\Prometeon\Solution-Original\Plugins\Grand.Plugin.Widgets.GoogleAnalytics\obj\Release\netcoreapp2.1\Grand.Plugin.Widgets.GoogleAnalytics.AssemblyInfo.cs
+E:\PROJELER\Prometeon\Solution-Original\Plugins\Grand.Plugin.Widgets.GoogleAnalytics\obj\Release\netcoreapp2.1\Grand.Plugin.Widgets.GoogleAnalytics.csproj.CoreCompileInputs.cache
+E:\PROJELER\Prometeon\Solution-Original\Plugins\Grand.Plugin.Widgets.GoogleAnalytics\obj\Release\netcoreapp2.1\Grand.Plugin.Widgets.GoogleAnalytics.dll
+E:\PROJELER\Prometeon\Solution-Original\Plugins\Grand.Plugin.Widgets.GoogleAnalytics\obj\Release\netcoreapp2.1\Grand.Plugin.Widgets.GoogleAnalytics.pdb

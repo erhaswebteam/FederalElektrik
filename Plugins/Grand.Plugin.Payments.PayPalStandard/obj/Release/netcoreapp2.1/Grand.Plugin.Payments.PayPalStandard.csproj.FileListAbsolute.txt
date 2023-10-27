@@ -1,0 +1,15 @@
+E:\PROJELER\Prometeon\Solution-Original\Grand.Web\Plugins\Payments.PayPalStandard\Views\PaymentPayPalStandard\_ViewImports.cshtml
+E:\PROJELER\Prometeon\Solution-Original\Grand.Web\Plugins\Payments.PayPalStandard\Description.txt
+E:\PROJELER\Prometeon\Solution-Original\Grand.Web\Plugins\Payments.PayPalStandard\logo.jpg
+E:\PROJELER\Prometeon\Solution-Original\Grand.Web\Plugins\Payments.PayPalStandard\Views\PaymentPayPalStandard\Configure.cshtml
+E:\PROJELER\Prometeon\Solution-Original\Grand.Web\Plugins\Payments.PayPalStandard\Views\PaymentPayPalStandard\PaymentInfo.cshtml
+E:\PROJELER\Prometeon\Solution-Original\Grand.Web\Plugins\Payments.PayPalStandard\Grand.Plugin.Payments.PayPalStandard.deps.json
+E:\PROJELER\Prometeon\Solution-Original\Grand.Web\Plugins\Payments.PayPalStandard\Grand.Plugin.Payments.PayPalStandard.dll
+E:\PROJELER\Prometeon\Solution-Original\Grand.Web\Plugins\Payments.PayPalStandard\Grand.Plugin.Payments.PayPalStandard.pdb
+E:\PROJELER\Prometeon\Solution-Original\Plugins\Grand.Plugin.Payments.PayPalStandard\obj\Release\netcoreapp2.1\Grand.Plugin.Payments.PayPalStandard.csproj.AssemblyReference.cache
+E:\PROJELER\Prometeon\Solution-Original\Plugins\Grand.Plugin.Payments.PayPalStandard\obj\Release\netcoreapp2.1\Grand.Plugin.Payments.PayPalStandard.GeneratedMSBuildEditorConfig.editorconfig
+E:\PROJELER\Prometeon\Solution-Original\Plugins\Grand.Plugin.Payments.PayPalStandard\obj\Release\netcoreapp2.1\Grand.Plugin.Payments.PayPalStandard.AssemblyInfoInputs.cache
+E:\PROJELER\Prometeon\Solution-Original\Plugins\Grand.Plugin.Payments.PayPalStandard\obj\Release\netcoreapp2.1\Grand.Plugin.Payments.PayPalStandard.AssemblyInfo.cs
+E:\PROJELER\Prometeon\Solution-Original\Plugins\Grand.Plugin.Payments.PayPalStandard\obj\Release\netcoreapp2.1\Grand.Plugin.Payments.PayPalStandard.csproj.CoreCompileInputs.cache
+E:\PROJELER\Prometeon\Solution-Original\Plugins\Grand.Plugin.Payments.PayPalStandard\obj\Release\netcoreapp2.1\Grand.Plugin.Payments.PayPalStandard.dll
+E:\PROJELER\Prometeon\Solution-Original\Plugins\Grand.Plugin.Payments.PayPalStandard\obj\Release\netcoreapp2.1\Grand.Plugin.Payments.PayPalStandard.pdb

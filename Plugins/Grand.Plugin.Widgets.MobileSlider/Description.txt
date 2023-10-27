@@ -1,0 +1,8 @@
+﻿Group: Widgets
+FriendlyName: Mobile Slider
+SystemName: Widgets.MobileSlider
+Version: 1.00
+SupportedVersions: 4.20
+Author: yunuscengiz
+DisplayOrder: 1
+FileName: Grand.Plugin.Widgets.MobileSlider.dll

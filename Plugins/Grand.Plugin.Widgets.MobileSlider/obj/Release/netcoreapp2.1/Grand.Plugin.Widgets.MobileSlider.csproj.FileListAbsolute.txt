@@ -1,0 +1,17 @@
+E:\PROJELER\Prometeon\Solution-Original\Grand.Web\Plugins\Widgets.MobileSlider\Views\_ViewImports.cshtml
+E:\PROJELER\Prometeon\Solution-Original\Grand.Web\Plugins\Widgets.MobileSlider\Content\slider\sample-images\banner1.jpg
+E:\PROJELER\Prometeon\Solution-Original\Grand.Web\Plugins\Widgets.MobileSlider\Content\slider\sample-images\banner2.jpg
+E:\PROJELER\Prometeon\Solution-Original\Grand.Web\Plugins\Widgets.MobileSlider\logo.jpg
+E:\PROJELER\Prometeon\Solution-Original\Grand.Web\Plugins\Widgets.MobileSlider\Views\Configure.cshtml
+E:\PROJELER\Prometeon\Solution-Original\Grand.Web\Plugins\Widgets.MobileSlider\Views\PublicInfo.cshtml
+E:\PROJELER\Prometeon\Solution-Original\Grand.Web\Plugins\Widgets.MobileSlider\Description.txt
+E:\PROJELER\Prometeon\Solution-Original\Grand.Web\Plugins\Widgets.MobileSlider\Grand.Plugin.Widgets.MobileSlider.deps.json
+E:\PROJELER\Prometeon\Solution-Original\Grand.Web\Plugins\Widgets.MobileSlider\Grand.Plugin.Widgets.MobileSlider.dll
+E:\PROJELER\Prometeon\Solution-Original\Grand.Web\Plugins\Widgets.MobileSlider\Grand.Plugin.Widgets.MobileSlider.pdb
+E:\PROJELER\Prometeon\Solution-Original\Plugins\Grand.Plugin.Widgets.MobileSlider\obj\Release\netcoreapp2.1\Grand.Plugin.Widgets.MobileSlider.csproj.AssemblyReference.cache
+E:\PROJELER\Prometeon\Solution-Original\Plugins\Grand.Plugin.Widgets.MobileSlider\obj\Release\netcoreapp2.1\Grand.Plugin.Widgets.MobileSlider.GeneratedMSBuildEditorConfig.editorconfig
+E:\PROJELER\Prometeon\Solution-Original\Plugins\Grand.Plugin.Widgets.MobileSlider\obj\Release\netcoreapp2.1\Grand.Plugin.Widgets.MobileSlider.AssemblyInfoInputs.cache
+E:\PROJELER\Prometeon\Solution-Original\Plugins\Grand.Plugin.Widgets.MobileSlider\obj\Release\netcoreapp2.1\Grand.Plugin.Widgets.MobileSlider.AssemblyInfo.cs
+E:\PROJELER\Prometeon\Solution-Original\Plugins\Grand.Plugin.Widgets.MobileSlider\obj\Release\netcoreapp2.1\Grand.Plugin.Widgets.MobileSlider.csproj.CoreCompileInputs.cache
+E:\PROJELER\Prometeon\Solution-Original\Plugins\Grand.Plugin.Widgets.MobileSlider\obj\Release\netcoreapp2.1\Grand.Plugin.Widgets.MobileSlider.dll
+E:\PROJELER\Prometeon\Solution-Original\Plugins\Grand.Plugin.Widgets.MobileSlider\obj\Release\netcoreapp2.1\Grand.Plugin.Widgets.MobileSlider.pdb

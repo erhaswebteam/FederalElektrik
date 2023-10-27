@@ -1,0 +1,8 @@
+﻿Group: Shopping card
+FriendlyName: Clear Shoppingcards
+SystemName: ShoppingCard.ClearShoppingCards
+Version: 1.0
+SupportedVersions: 4.20
+Author: grandnode team
+DisplayOrder: 1
+FileName: Grand.Plugin.ShoppingCard.ClearShoppingCards.dll

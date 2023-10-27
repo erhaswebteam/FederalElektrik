@@ -1,0 +1,8 @@
+﻿Group: Payment options
+FriendlyName: Payment Options (Ipara)
+SystemName: Payments.PaymentOptions
+Version: 1.300
+SupportedVersions: 4.20
+Author: Hakan TURAN
+DisplayOrder: 1
+FileName: Grand.Plugin.Payments.PaymentOptions.dll
