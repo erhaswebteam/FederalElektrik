@@ -1,8 +1,0 @@
-﻿Group: SMS
-FriendlyName: Codec Send SMS
-SystemName: Codec.SendSms
-Version: 1.00
-SupportedVersions: 4.20
-Author: Hakan TURAN
-DisplayOrder: 1
-FileName: Grand.Plugin.Codec.SendSms.dll

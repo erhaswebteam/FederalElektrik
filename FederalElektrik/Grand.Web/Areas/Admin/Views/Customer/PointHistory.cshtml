@@ -1,0 +1,29 @@
+﻿@model List<PointHistoryModel>
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_AdminPopupLayout.cshtml";
+    //Layout ="";
+    //page title
+    ViewBag.Title = "Puan Geçmişi";
+}
+<div class="container">
+    <div class="row">
+        <h2>Puan Geçmişi</h2>
+        <table width="100%" role="grid" class="table">
+            <tr>
+                <th>Puan</th>
+                <th>Açıklama</th>
+                <th>Kayıt Tarihi</th>
+            </tr>
+            @{
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@(item.Point.ToString("0"))</td>
+                        <td> @item.Message</td>
+                        <td>@item.CreatedDate.ToString()</td>
+                    </tr>
+                }
+            }
+        </table>
+    </div>
+</div>

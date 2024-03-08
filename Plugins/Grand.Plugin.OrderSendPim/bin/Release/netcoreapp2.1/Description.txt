@@ -1,8 +1,0 @@
-﻿Group: Order
-FriendlyName: Order Send PIM
-SystemName: Order.OrderSendPim
-Version: 1.00
-SupportedVersions: 4.20
-Author: Hakan TURAN
-DisplayOrder: 1
-FileName: Grand.Plugin.Order.OrderSendPim.dll

@@ -1,0 +1,143 @@
+﻿@model PointTransferModel
+@using Grand.Web.Models.Customer;
+@{
+    Layout = "_ColumnsTwo";
+
+    //title
+    Html.AddTitleParts(T("PageTitle.Account").Text);
+    
+}
+@section left
+    {
+    @await Component.InvokeAsync("CustomerNavigation", new { selectedTabId = CustomerNavigationEnum.PointTransfer })
+}
+
+@if (Model?.Result != null)
+{
+    var title = Model.Result.Success ? "Transfer tamamlandı" : "Hata";
+    var style = Model.Result.Success ? "success" : "danger";
+    <section class=" pl-lg-3 pt-5">
+
+        <div class="card border-@style mb-3">
+            <div class="card-body text-@style">
+                <h5 class="card-title">@title</h5>
+                <p class="card-text">@Model.Result.Message</p>
+            </div>
+        </div>
+
+        <br>
+        <a href="/customer/pointtransfer" class="btn btn-info text-center" onclick="window.location.reload();">Yeni bir işlem yap</a>
+    </section>
+}
+else
+{
+    <form id="transferForm" asp-route="PointTransfer" method="post" autocomplete="off">
+        <section class="page pl-lg-3">
+            <h1 class="h2 generalTitle">@T("Account.PointTransfer")</h1>
+            <p class="card-body" style="font-size:14px;">
+                Puan göndermek istenilen müşterinizin mail adresini yazarak, <strong>Müşteriyi Kontrol Et</strong> butonuyla sorgulayınız.
+                <br />
+                Müşteriden eminseniz, puan miktarını yazarak <strong>Transfer Et</strong> butonuyla puanınızı paylaşabilirsiniz.
+            </p>
+            <hr />
+            <div asp-validation-summary="ModelOnly" class="message-error"></div>
+            @*<div class="form-fields">
+                    <fieldset class="form-group">
+                        <div class="col-6">
+
+                        </div>
+                        <div class="col-4">
+
+                        </div>
+                    </fieldset>
+                    <fieldset class="form-group col-6 mail"></fieldset>
+                </div>*@
+            <div class="d-flex slick-vertical">
+                <div class="col-7 px-0 form-group">
+                    <label asp-for="Email" class="col-form-label">@T("pointtransfer.emailorvatnumber"):</label>
+                    <input asp-for="Email" class="form-control col-11" required />
+                    <span asp-validation-for="Email"></span>
+                </div>
+                <div class="col-3 px-0 form-group" style="margin-top:37px !important;">
+                    <input id="getCusBtn" type="button" value="Müşteriyi Kontrol Et" class="form-control btn btn-warning">
+                </div>
+            </div>
+            <div id="receiverInfoContainer" style="display:none;">
+                <div class="card border-info">
+                    <div class="card-header" id="ricCom" style="display:none;"></div>
+                    <div class="card-header" id="ricName" style="display:none;"></div>
+                    <div class="card-header" id="ricUser" style="display:none;"></div>
+                </div>
+            </div>
+            <fieldset class="col-3 px-0 form-group">
+                <legend class="sr-only">@T("account.pointtransfer.point")</legend>
+                <label asp-for="Point" class="col-form-label">@T("Account.Fields.Point"):</label>
+                <input asp-for="Point" type="number" class="form-control" required />
+                <span asp-validation-for="Point"></span>
+            </fieldset>
+            <div class="text-xs-center">
+                <input id="btn_transfer" type="submit" class="btn btn-info" value="@T("Account.PointTransfer.Button")" onclick="return confirm('Transfer işlemini gerçekleştirmek istediğinize emin misiniz?')" disabled />
+            </div>
+
+        </section>
+        <input type="hidden" asp-for="CheckPage" value="@( System.Guid.NewGuid())" />
+    </form>
+}
+
+<script>
+    $(document).ready(function () {
+        $("#Email").focusout(function () {
+            GetComp();
+        });
+
+        $('#getCusBtn').on('click', function () {
+
+            GetComp();
+        });
+
+        function GetComp() {
+            var _length = $('#Email').val().length;;
+            if (_length == 0) {
+                $('#receiverInfoContainer').fadeOut(300);
+                $("#btn_transfer").prop("disabled", true);
+            }
+            else {
+                $("#btn_transfer").prop("disabled", true);
+                $.ajax(
+                    {
+                        type: "POST",
+                        url: "/Customer/GetReceiverCustomer",
+                        data: { email: $('#Email').val() },
+                        success: function (data, textStatus, xhr) {
+                            if (data != null) {
+
+                                $('#ricUser').html('Email : ' + data.Email).show();
+
+                                var firstNameAtt ='';
+                                var lastnameAtt = '';
+                                var compName = '';
+
+                                firstNameAtt = data.FirstName;
+                                lastnameAtt = data.LastName;
+                                compName = data.Company;
+
+                                $('#ricName').html('Ad Soyad : ' + firstNameAtt + ' ' + lastnameAtt).show();
+                                $('#ricCom').html('Ünvan : ' + compName == undefined ? '' : 'Ünvan : ' + compName).show();
+
+                                $('#receiverInfoContainer').fadeIn(300);
+                                $("#btn_transfer").removeAttr("disabled");
+                            }
+                            else {
+                                $('#receiverInfoContainer').fadeOut(300);
+                                $("#btn_transfer").prop("disabled", true);
+                                alert("Kullanıcı bulunamadı");
+                            }
+                        }
+                    }
+                ).fail(function (data, textStatus, xhr) {
+                    console.log(data);
+                });
+            }
+        }
+    });
+</script>

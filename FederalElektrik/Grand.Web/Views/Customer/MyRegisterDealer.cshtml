@@ -1,0 +1,97 @@
+﻿@{
+    Layout = "_ColumnsTwo";
+
+    //title
+    Html.AddTitleParts(T("pagetitle.myregisterdealer").Text);
+}
+@section left
+{
+    @await Component.InvokeAsync("CustomerNavigation", new { selectedTabId = CustomerNavigationEnum.MyRegisterDealer })
+}
+@if (ViewBag.Error != null || ViewBag.Success != null)
+{
+    <section class=" pl-lg-3 pt-5">
+        @{
+            var _error = (List<string>)ViewBag.Error;
+            if (_error != null && _error.Count > 0)
+            {
+                <div class="card border-danger mb-3">
+                    <div class="card-body text-danger">
+                        @foreach (var err in _error)
+                        {
+                            <p class="card-text">@err</p>
+                            <hr />
+                        }
+                    </div>
+                </div>
+            }
+            var _success = (List<string>)ViewBag.Success;
+            if (_success != null && _success.Count > 0)
+            {
+                <div class="card border-success mb-3">
+                    <div class="card-body text-success">
+                        @foreach (var scc in _success)
+                        {
+                            <p class="card-text">@scc</p>
+                            <hr />
+                        }
+                    </div>
+                </div>
+            }
+        }
+        <br>
+        <a href="/customer/MyRegisterDealer" class="btn btn-info text-center" onclick="window.location.reload();">Yeni bir işlem yap</a>
+    </section>
+}
+else
+{
+    <div class="page account-page address-list-page pl-lg-3">
+        <h1 class="h2 generalTitle">@T("Account.MyRegisterDealer.h1")</h1>
+        <br />
+        <div class="table-responsive">
+            @if (Model != null && Model.Count > 0)
+            {
+                <form action="/Customer/MyRegisterDealer" method="post" autocomplete="off">
+                    <table class="table table-hover">
+                        <tr>
+                            <th style="width:35%; text-align:center;">Email</th>
+                            <th style="width: 35%; text-align: center;">Telefon</th>
+                            <th style="width: 30%; text-align: center;">Gönderilecek Puan</th>
+                        </tr>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td style="text-align: center;">@item.Email</td>
+                                <td style="text-align: center;">@item.Phone</td>
+                                <td style="text-align: center;">
+                                    <input type="text" name="SendedPoint_@item.Id" onkeypress="validate(event)" class="form-control" style="text-align:center;" />
+                                </td>
+                            </tr>
+                        }
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td style="text-align:center;"><button type="submit" class="btn btn-info">Puanları Aktar</button></td>
+                        </tr>
+                    </table>
+                    <input type="hidden" name="CheckPage" value="@(System.Guid.NewGuid())" />
+                </form>
+            }
+            else
+            {
+                <p>Henüz kayıtlı bir kullanıcınız yok.</p>
+            }
+        </div>
+    </div>
+}
+<script>
+    function validate(e) {
+        var a = e || window.event,
+            i = a.keyCode || a.which;
+        i = String.fromCharCode(i);
+
+        var t = /[0-9]|\.,/;
+        t.test(i) || (a.returnValue = !1, a.preventDefault && a.preventDefault())
+    }
+</script>

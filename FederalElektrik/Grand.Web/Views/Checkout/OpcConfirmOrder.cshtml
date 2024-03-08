@@ -1,0 +1,79 @@
+﻿@model CheckoutConfirmModel
+<!-- Cart modal --><!--YENİ STOK KONTROLÜ-->
+<div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="cartModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document" style="max-width:75%!important">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Alışveriş Sepeti</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="mt-4 mb-4" id="errorContainer"></div>
+            <div id="cartContainer"></div>
+        </div>
+    </div>
+</div>
+<div class="checkout-data col-12 px-0">
+    @await Component.InvokeAsync("Widget", new { widgetZone = "op_checkout_confirm_top" })
+    <div class="order-summary">
+        @await Component.InvokeAsync("OrderSummary", new { prepareAndDisplayOrderReviewData = true })
+    </div>
+    <div class="confirm-order">
+        <div>
+            @if (!String.IsNullOrEmpty(Model.MinOrderTotalWarning))
+            {
+                <div class="card text-white card-danger min-amount-warning">
+                    <div class="card-body p-3">
+                        <blockquote class="card-bodyquote mb-0">
+                            <span>@Model.MinOrderTotalWarning</span>
+                        </blockquote>
+                    </div>
+                </div>
+            }
+        </div>
+        @if (Model.Warnings.Any())
+        {
+            <div class="card text-white card-danger">
+                <div class="card-body p-3">
+                    @foreach (var warning in Model.Warnings)
+                    {
+                        <blockquote class="card-bodyquote mb-0">
+                            <span>@warning</span>
+                        </blockquote>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+    @await Component.InvokeAsync("Widget", new { widgetZone = "op_checkout_confirm_bottom" })
+    @if (String.IsNullOrEmpty(Model.MinOrderTotalWarning) && Model.TermsOfServiceOnOrderConfirmPage)
+    {
+        <div class="col-12">
+            <div class="modal fade" id="terms-of-service-warning-box" tabindex="-1" title="@T("Checkout.TermsOfService")" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="display:none;">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p>@T("Checkout.TermsOfService.PleaseAccept")</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="terms-of-service">
+                <label class="custom-control custom-checkbox">
+                    <input type="checkbox" id="termsofservice" name="termsofservice" class="custom-control-input">
+                    <span class="custom-control-label"></span>
+                    @*<span class="custom-control-description">@T("Checkout.TermsOfService.IAccept") </span>*@
+                    @*<br /><span class="custom-control-description"></span>*@
+
+                    <a class="read" onclick="javascript:OpenWindow('@Url.RouteUrl("TopicPopup", new { SystemName = "OnBilgilendirmeFormu" })', 450, 500, true)">Ön Bilgilendirme Formunu</a> &nbsp;&nbsp;ve <a class="read" onclick="javascript:OpenWindow('@Url.RouteUrl("TopicPopup", new { SystemName = "MesafeliSatisSozlesmesi" })', 450, 500, true)">Mesafeli Satış Sözleşmesini</a> okudum ve onaylıyorum.
+                </label>
+            </div>
+        </div>
+    }
+</div>

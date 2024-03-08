@@ -1,0 +1,68 @@
+﻿@{
+    Layout = "_ConfigurePlugin";
+}
+@model ConfigurationModel
+@using Grand.Plugin.Rewards.RewardOperations.Models
+@using Grand.Framework;
+@await Component.InvokeAsync("StoreScopeConfiguration")
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+        <div class="form-body">
+            <div class="note note-info">
+                <b>
+                    Eğer bu eklentiyi aktif ederseniz, ödeme esnasında pointBank üzerinden ödeme işlemi gerçekleştirilecektir...
+                </b>
+            </div>
+            <div class="form-group">
+                <div class="col-md-3 col-sm-3 text-right">
+                    @Html.OverrideStoreCheckboxFor(model => model.AddressGetUser_OverrideForStore, model => model.AddressGetUser, string.Empty)
+                    <admin-label asp-for="AddressGetUser" class="control-label" />
+                </div>
+                <div class="col-md-9 col-sm-9">
+                    <admin-input asp-for="AddressGetUser" />
+                    <span asp-validation-for="AddressGetUser"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-3 col-sm-3 text-right">
+                    @Html.OverrideStoreCheckboxFor(model => model.AddressPointSpending_OverrideForStore, model => model.AddressPointSpending, string.Empty)
+                    <admin-label asp-for="AddressPointSpending" class="control-label" />
+                </div>
+                <div class="col-md-9 col-sm-9">
+                    <admin-input asp-for="AddressPointSpending" />
+                    <span asp-validation-for="AddressPointSpending"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-3 col-sm-3 text-right">
+                    @Html.OverrideStoreCheckboxFor(model => model.ProjectPreChars_OverrideForStore, model => model.ProjectPreChars, string.Empty)
+                    <admin-label asp-for="ProjectPreChars" class="control-label" />
+                </div>
+                <div class="col-md-9 col-sm-9">
+                    <admin-input asp-for="ProjectPreChars" />
+                    <span asp-validation-for="ProjectPreChars"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-3 col-sm-3 text-right">
+                    @Html.OverrideStoreCheckboxFor(model => model.ApiToken_OverrideForStore, model => model.ApiToken, string.Empty)
+                    <admin-label asp-for="ApiToken" class="control-label" />
+                </div>
+                <div class="col-md-9 col-sm-9">
+                    <admin-input asp-for="ApiToken" />
+                    <span asp-validation-for="ApiToken"></span>
+                </div>
+            </div>
+        </div>
+        <div class="form-actions">
+            <div class="row">
+                <div class="col-md-offset-3 col-sm-offset-3 col-md-9 col-sm-9">
+                    <input type="submit" name="save" class="btn green" value="@T("Admin.Common.Save")" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+}

@@ -1,8 +1,0 @@
-﻿Group: Payment methods
-FriendlyName: Payment With IPara
-SystemName: Payments.IPara
-Version: 1.0
-SupportedVersions: 4.20
-Author: Erhas.Net
-DisplayOrder: 1
-FileName: Grand.Plugin.Payments.IPara.dll

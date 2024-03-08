@@ -1,0 +1,13 @@
+Shipping.ByWeight
+Widgets.Slider
+ContactFormAnswer
+Tax.FixedRate
+PromotionFeed.GoogleShopping
+Widgets.GoogleAnalytics
+Payments.CheckMoneyOrder
+OrderSendLogo
+Rewards.RewardOperations
+Customer.InsertAndPointProcess
+ShoppingCard.ClearShoppingCards
+Widgets.MobileSlider
+Payments.PaymentOptions

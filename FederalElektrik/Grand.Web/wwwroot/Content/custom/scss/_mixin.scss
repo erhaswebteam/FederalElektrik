@@ -1,0 +1,175 @@
+@mixin efekt($what: all) {
+  transition: $what .25s ease-in-out;
+}
+
+.efekt {
+  transition: all 0.25s ease-in-out;
+}
+
+.ortala{
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.flex {
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.bdrs {
+  border-radius: 3px;
+}
+
+.dikeyAbsolute {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.dikeyFlex {
+  display: flex;
+  align-items: center;
+}
+
+.bxs {
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  transition: all 0.2s ease-in-out;
+
+  &:Hover {
+    box-shadow: rgba(100, 100, 111, 0.25) 0px 7px 29px 0px;
+  }
+}
+
+.bxsh {
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.fz15{
+  font-size: 1.5rem;
+}
+
+.fz14{
+  font-size: 14rem;
+}
+
+.fz13{
+  font-size: 1.3rem;
+}
+
+.fz12{
+  font-size: 1.2rem;
+}
+
+.fz11{
+  font-size: 1.1rem;
+}
+
+.fz10{
+  font-size: 1rem;
+}
+
+.fz9 {
+  font-size: 0.9rem;
+}
+
+.fz85 {
+  font-size: 0.85rem;
+}
+
+.fz8 {
+  font-size: 0.8rem;
+}
+
+.fz7 {
+  font-size: 0.7rem;
+}
+
+.bgcover {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.fw300 {
+  font-weight: 300;
+}
+
+.fw400 {
+  font-weight: 400;
+}
+
+.fw500 {
+  font-weight: 500;
+}
+
+.fw600 {
+  font-weight: 600;
+}
+
+.fw700 {
+  font-weight: 700;
+}
+
+.fw800 {
+  font-weight: 800;
+}
+
+.mb15 {
+  margin-bottom: 15px;
+}
+
+.mb30 {
+  margin-bottom: 30px;
+}
+
+.mb50{
+  margin-bottom: 50px;
+}
+
+.mb60{
+  margin-bottom: 60px;
+}
+
+.mb75{
+  margin-bottom: 75px;
+}
+
+.mb100{
+  margin-bottom: 100px;
+}
+
+.mb150{
+  margin-bottom: 150px;
+}
+
+.mt15 {
+  margin-top: 15px;
+}
+
+.mt30 {
+  margin-top: 30px;
+}
+
+.mt50 {
+  margin-top: 50px;
+}
+
+.mt60 {
+  margin-top: 60px;
+}
+
+.mt75 {
+  margin-top: 75px;
+}
+
+.mt100 {
+  margin-top: 100px;
+}
+
+.mt150{
+  margin-top: 150px;
+}

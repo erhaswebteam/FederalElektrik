@@ -1,8 +1,0 @@
-﻿Group: Contact Method
-FriendlyName: ContactForm Answer
-SystemName: ContactFormAnswer
-Version: 1.00
-SupportedVersions: 4.20
-Author: Erkan Domurcuk
-DisplayOrder: 1
-FileName: Grand.Plugin.ContactFormAnswer.dll
