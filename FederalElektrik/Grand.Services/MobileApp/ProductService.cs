@@ -26,6 +26,7 @@ using MongoDB.Bson;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Grand.Services.Orders;
+using System.Text.RegularExpressions;
 namespace Grand.Services.Catalog
 {
     public partial class ProductService
@@ -207,10 +208,12 @@ namespace Grand.Services.Catalog
                     (!p.MarkAsNewEndDateTimeUtc.HasValue || p.MarkAsNewEndDateTimeUtc.Value > nowUtc));
             }
 
+            //to do: türkçe için search düzeltilecek, sku değerinde de arama yapacak
+
             //searching by keyword
             if (!String.IsNullOrWhiteSpace(keywords))
             {
-                keywords = StringReplace(keywords);
+                keywords = StringReplaceToTurkishWithUnicode(keywords);
                 if (_commonSettings.UseFullTextSearch)
                 {
                     keywords = "\"" + keywords + "\"";
@@ -408,6 +411,39 @@ namespace Grand.Services.Catalog
             text = text.Replace("Ç", "C");
             text = text.Replace("ç", "c");
             return text.ToLower();
+        }
+
+        string StringReplaceToTurkishWithUnicode(string text)
+        {
+            // Türkçe karakterlerin Unicode kodları ve karşılık gelen ASCII karakterler
+            string[,] turkishCharMap = new string[,] {
+                { "\u0131", "i" }, // ı -> i
+                { "\u0049", "ı" }, // İ -> ı
+                { "\u00E7", "c" }, // ç -> c
+                { "\u00C7", "C" }, // Ç -> C
+                { "\u015F", "s" }, // ş -> s
+                { "\u015E", "S" }, // Ş -> S
+                { "\u011F", "g" }, // ğ -> g
+                { "\u011E", "G" }, // Ğ -> G
+                { "\u00FC", "u" }, // ü -> u
+                { "\u00DC", "U" }, // Ü -> U
+                { "\u00F6", "o" }, // ö -> o
+                { "\u00D6", "O" }  // Ö -> O
+            };
+
+            // Türkçe karakterlerin Unicode kodlarını içeren Regex deseni
+            string regexPattern = string.Join("|", turkishCharMap);
+
+            // Regex.Replace metodu ile Türkçe karakterleri değiştirme
+            return Regex.Replace(text, regexPattern, m =>
+            {
+                for (int i = 0; i < turkishCharMap.GetLength(0); i++)
+                {
+                    if (m.Value.Equals(turkishCharMap[i, 0]))
+                        return turkishCharMap[i, 1];
+                }
+                return m.Value; // Eşleşme yoksa orijinal karakteri geri döndür
+            });
         }
     }
 }
