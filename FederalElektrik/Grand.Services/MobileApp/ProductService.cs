@@ -208,8 +208,6 @@ namespace Grand.Services.Catalog
                     (!p.MarkAsNewEndDateTimeUtc.HasValue || p.MarkAsNewEndDateTimeUtc.Value > nowUtc));
             }
 
-            //to do: türkçe için search düzeltilecek, sku değerinde de arama yapacak
-
             //searching by keyword
             if (!String.IsNullOrWhiteSpace(keywords))
             {
