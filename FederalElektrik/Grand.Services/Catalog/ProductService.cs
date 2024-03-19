@@ -841,10 +841,9 @@ namespace Grand.Services.Catalog
             {
                 if (_commonSettings.UseFullTextSearch)
                 {
-                    keywords = "\"" + keywords + "\"";
-                    keywords = keywords.Replace("+", "\" \"");
-                    keywords = keywords.Replace(" ", "\" \"");
-                    filter = filter & builder.Text(keywords);
+                    var ss = GenerateSearchTerm(keywords);
+                    var reg = new BsonRegularExpression(ss, "gi");
+                    filter = filter & (builder.Regex(p => p.Name, reg) | builder.Regex(t => t.ShortDescription, reg) | builder.Where(y => y.Sku.ToLower().Contains(keywords.ToLower())));
                 }
                 else
                 {
@@ -974,7 +973,26 @@ namespace Grand.Services.Catalog
             }
 
             var products = new PagedList<Product>(_productRepository.Collection, filter, builderSort, pageIndex, pageSize);
-
+            if (orderBy == ProductSortingEnum.PriceAsc)
+            {
+                var products1 = new PagedList<Product>(_productRepository.Collection, filter, builderSort, 0, int.MaxValue).OrderBy(x => x.Price).ToList();
+                products = new PagedList<Product>(products1, pageIndex, pageSize);
+            }
+            else if (orderBy == ProductSortingEnum.PriceDesc)
+            {
+                var products1 = new PagedList<Product>(_productRepository.Collection, filter, builderSort, 0, int.MaxValue).OrderByDescending(x => x.Price).ToList();
+                products = new PagedList<Product>(products1, pageIndex, pageSize);
+            }
+            else if (orderBy == ProductSortingEnum.NameAsc)
+            {
+                var products1 = new PagedList<Product>(_productRepository.Collection, filter, builderSort, 0, int.MaxValue).OrderBy(x => x.Name).ToList();
+                products = new PagedList<Product>(products1, pageIndex, pageSize);
+            }
+            else if (orderBy == ProductSortingEnum.NameDesc)
+            {
+                var products1 = new PagedList<Product>(_productRepository.Collection, filter, builderSort, 0, int.MaxValue).OrderByDescending(x => x.Name).ToList();
+                products = new PagedList<Product>(products1, pageIndex, pageSize);
+            }
             if (loadFilterableSpecificationAttributeOptionIds && !_catalogSettings.IgnoreFilterableSpecAttributeOption)
             {
                 IList<string> specyfication = new List<string>();

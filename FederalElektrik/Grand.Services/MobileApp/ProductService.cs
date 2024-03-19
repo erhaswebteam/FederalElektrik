@@ -211,13 +211,11 @@ namespace Grand.Services.Catalog
             //searching by keyword
             if (!String.IsNullOrWhiteSpace(keywords))
             {
-                keywords = StringReplaceToTurkishWithUnicode(keywords);
                 if (_commonSettings.UseFullTextSearch)
                 {
-                    keywords = "\"" + keywords + "\"";
-                    keywords = keywords.Replace("+", "\" \"");
-                    keywords = keywords.Replace(" ", "\" \"");
-                    filter = filter & builder.Text(keywords);
+                    var ss = GenerateSearchTerm(keywords);
+                    var reg = new BsonRegularExpression(ss, "gi");
+                    filter = filter & (builder.Regex(p => p.Name, reg) | builder.Regex(t => t.ShortDescription, reg) | builder.Where(y => y.Sku.ToLower().Contains(keywords.ToLower())));
                 }
                 else
                 {
@@ -393,7 +391,46 @@ namespace Grand.Services.Catalog
             #endregion
 
         }
+        private string GenerateSearchTerm(string searchText)
+        {
+            var text = searchText;
+            // Replace special characters
+            text = Regex.Replace(text, @"/[-\/\\^$*+?.()|[\]{}]/g", "");
+            var array = text.ToCharArray();
+            string getchar(Char i)
+            {
+                var result = i.ToString();
+                if (i == 'i' || i == 'I' || i == 'ı' || i == 'İ')
+                {
+                    result = "(ı|i|İ|I|İ)";
+                }
+                else if (i == 'g' || i == 'G' || i == 'ğ' || i == 'Ğ')
+                {
+                    result = "(ğ|g|Ğ|G)";
+                }
+                else if (i == 'u' || i == 'U' || i == 'ü' || i == 'Ü')
+                {
+                    result = "(ü|u|Ü|U)";
+                }
+                else if (i == 's' || i == 'S' || i == 'ş' || i == 'Ş')
+                {
+                    result = "(ş|s|Ş|S)";
+                }
+                else if (i == 'o' || i == 'O' || i == 'ö' || i == 'Ö')
+                {
+                    result = "(ö|o|Ö|O)";
+                }
+                else if (i == 'c' || i == 'C' || i == 'ç' || i == 'Ç')
+                {
+                    result = "(ç|c|Ç|C)";
+                }
+                return result;
+            }
 
+            var newArray = array.Select(x => getchar(x)).ToArray();
+            text = "(.*)" + string.Join("", newArray) + "(.*)";
+            return text;
+        }
         private string StringReplace(string text)
         {
             text = text.Replace("İ", "I");

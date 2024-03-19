@@ -16,7 +16,11 @@
 
     var breadcrumbDelimiter = commonSettings.BreadcrumbDelimiter;
 }
-
+<script>
+    window.addEventListener("load", function (event) {
+        localStorage.setItem("categoryId", "@Model.Id");
+    });
+</script>
 @*category breadcrumb*@
 @section Breadcrumb
 {

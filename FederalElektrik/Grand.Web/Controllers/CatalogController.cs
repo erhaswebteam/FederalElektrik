@@ -138,7 +138,7 @@ namespace Grand.Web.Controllers
 
         #region Manufacturers
 
-        public virtual IActionResult Manufacturer(string manufacturerId, CatalogPagingFilteringModel command)
+        public virtual IActionResult Manufacturer(string manufacturerId, CatalogPagingFilteringModel command, string categoryId = null)
         {
             var manufacturer = _catalogWebService.GetManufacturerById(manufacturerId);
             if (manufacturer == null)
@@ -172,13 +172,18 @@ namespace Grand.Web.Controllers
             //activity log
             _customerActivityService.InsertActivity("PublicStore.ViewManufacturer", manufacturer.Id, _localizationService.GetResource("ActivityLog.PublicStore.ViewManufacturer"), manufacturer.Name);
             _customerActionEventService.Viewed(customer, this.HttpContext.Request.Path.ToString(), this.Request.Headers[HeaderNames.Referer].ToString() != null ? Request.Headers[HeaderNames.Referer].ToString() : "");
-
+            if (!string.IsNullOrEmpty(categoryId))
+            {
+                var cats = _catalogWebService.GetChildCategoryIds(categoryId);//_categoryService.GetAllCategoriesByParentCategoryId(categoryId).Select(t=>t.Id);
+                cats.Add(categoryId);
+                command.CategoryId = string.Join('-', cats);
+            }
             //model
             var model = _catalogWebService.PrepareManufacturer(manufacturer, command);
-
+            model.PagingFilteringContext.CategoryId = categoryId;
             //template
             var templateViewPath = _catalogWebService.PrepareManufacturerTemplateViewPath(manufacturer.ManufacturerTemplateId);
-
+           
             return View(templateViewPath, model);
         }
 

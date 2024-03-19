@@ -3394,7 +3394,10 @@ namespace Grand.Web.Areas.Admin.Controllers
                 var categories = prdk.ProductCategories;
                 foreach(var item in categories)
                 {
-                    cats += _categoryService.GetCategoryById(item.CategoryId).Name + ";";
+                    if (string.IsNullOrEmpty(item.CategoryId) == false)
+                    {
+                        cats += _categoryService.GetCategoryById(item.CategoryId).Name + ";";
+                    }
                 }
                 string taxRate = _taxCategoryService.GetTaxCategoryById(prdk.TaxCategoryId)?.Name;
 
@@ -3501,7 +3504,7 @@ namespace Grand.Web.Areas.Admin.Controllers
             try
             {
                 byte[] bytes = _exportManager.ExportProductExportModelToXlsx(prdkExportModel);
-                return File(bytes, "text/xls", "Prometeon_ProductsList.xlsx");
+                return File(bytes, "text/xls", "Federal_ProductsList.xlsx");
             }
             catch (Exception exc)
             {

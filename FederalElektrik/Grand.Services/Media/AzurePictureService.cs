@@ -10,6 +10,7 @@ using Grand.Services.Configuration;
 using Grand.Services.Events;
 using Grand.Services.Logging;
 using Microsoft.AspNetCore.Hosting;
+using Grand.Core.Domain.Catalog;
 
 namespace Grand.Services.Media
 {
@@ -36,14 +37,14 @@ namespace Grand.Services.Media
             IEventPublisher eventPublisher,
             MediaSettings mediaSettings,
             IHostingEnvironment hostingEnvironment,
-            GrandConfig config)
+            GrandConfig config, IRepository<Product> productRepository)
             : base(pictureRepository,
                 settingService,
                 webHelper,
                 logger,
                 eventPublisher,
                 mediaSettings,
-                hostingEnvironment)
+                hostingEnvironment, productRepository)
         {
             this._config = config;
 

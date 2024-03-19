@@ -1,5 +1,6 @@
 ﻿using Grand.Core;
 using Grand.Core.Data;
+using Grand.Core.Domain.Catalog;
 using Grand.Core.Domain.Media;
 using Grand.Services.Configuration;
 using Grand.Services.Events;
@@ -37,7 +38,7 @@ namespace Grand.Services.Media
         private readonly IEventPublisher _eventPublisher;
         private readonly MediaSettings _mediaSettings;
         private readonly IHostingEnvironment _hostingEnvironment;
-
+        private readonly IRepository<Product> _productRepository;
         #endregion
 
         #region Ctor
@@ -59,7 +60,8 @@ namespace Grand.Services.Media
             ILogger logger,
             IEventPublisher eventPublisher,
             MediaSettings mediaSettings,
-            IHostingEnvironment hostingEnvironment)
+            IHostingEnvironment hostingEnvironment,
+            IRepository<Product> productRepository)
         {
             this._pictureRepository = pictureRepository;
             this._settingService = settingService;
@@ -68,6 +70,8 @@ namespace Grand.Services.Media
             this._eventPublisher = eventPublisher;
             this._mediaSettings = mediaSettings;
             this._hostingEnvironment = hostingEnvironment;
+            this._pictureRepository = pictureRepository;
+            this._productRepository = productRepository;
         }
 
         #endregion
@@ -435,7 +439,7 @@ namespace Grand.Services.Media
             PictureType defaultPictureType = PictureType.Entity)
         {
             var picture = GetPictureById(pictureId);
-            return GetPictureUrl(picture, targetSize, showDefaultPicture, storeLocation, defaultPictureType);
+            return GetPictureUrl(picture, targetSize, showDefaultPicture, storeLocation, defaultPictureType,pictureId);
         }
 
         /// <summary>
@@ -451,7 +455,7 @@ namespace Grand.Services.Media
              int targetSize = 0,
              bool showDefaultPicture = true,
              string storeLocation = null,
-             PictureType defaultPictureType = PictureType.Entity)
+             PictureType defaultPictureType = PictureType.Entity, string pictureid = "")
         {
             string url = string.Empty;
             byte[] pictureBinary = null;
@@ -533,6 +537,21 @@ namespace Grand.Services.Media
 
                 if (picture == null || pictureBinary == null || pictureBinary.Length == 0)
                 {
+                    var product = _productRepository.Table.Where(x => x.ProductPictures.Any(t => t.PictureId == pictureid)).FirstOrDefault();
+                    if (product != null)
+                    {
+                        var seofile = product.ProductPictures.FirstOrDefault().SeoFilename;
+                        if (seofile != null)
+                        {
+                            picSize = targetSize;
+                            if (targetSize == 0)
+                            {
+                                picSize = _mediaSettings.MaximumImageSize;
+                            }
+                            urlFile = seofile;
+                            return string.Format(_mediaSettings.CdnMediaServerURL, urlFile, picSize.ToString());
+                        }
+                    }
                     if (showDefaultPicture)
                     {
                         url = GetDefaultPictureUrl(targetSize, defaultPictureType, storeLocation);
@@ -561,6 +580,21 @@ namespace Grand.Services.Media
                         pictureBinary = LoadPictureBinary(picture);
                     if (picture == null || pictureBinary == null || pictureBinary.Length == 0)
                     {
+                        var product = _productRepository.Table.Where(x => x.ProductPictures.Any(t => t.PictureId == pictureid)).FirstOrDefault();
+                        if (product != null)
+                        {
+                            var seofile = product.ProductPictures.FirstOrDefault().SeoFilename;
+                            if (seofile != null)
+                            {
+                                var picSize = targetSize;
+                                if (targetSize == 0)
+                                {
+                                    picSize = _mediaSettings.MaximumImageSize;
+                                }
+                                var urlFile = seofile;
+                                return string.Format(_mediaSettings.CdnMediaServerURL, urlFile, picSize.ToString());
+                            }
+                        }
                         if (showDefaultPicture)
                         {
                             url = GetDefaultPictureUrl(targetSize, defaultPictureType, storeLocation);

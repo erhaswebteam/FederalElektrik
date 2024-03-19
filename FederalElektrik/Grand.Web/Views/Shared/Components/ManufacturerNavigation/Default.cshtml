@@ -10,7 +10,7 @@
                 @foreach (var manufacturer in Model.Manufacturers)
                 {
                     <li class="@(manufacturer.IsActive ? "active" : "inactive")">
-                        <a href="@Url.RouteUrl("Manufacturer", new { SeName = manufacturer.SeName })">@manufacturer.Name</a>
+                        <a class="link" href="@Url.RouteUrl("Manufacturer", new { SeName = manufacturer.SeName })">@manufacturer.Name</a>
                     </li>
                 }
             </ul>
@@ -24,6 +24,16 @@
     </div>
 
 
+    <script>
+        $(window).load(function () {
+            setTimeout(() => {
+                var lis = $(".link");
+                for (var i = 0; i < lis.length; i++) {
+                    $(lis[i]).attr("href", $(lis[i]).attr("href") + "?categoryId=" + localStorage.getItem("categoryId"));
+                }
+            }, 100)
+        })
+    </script>
 
 
 

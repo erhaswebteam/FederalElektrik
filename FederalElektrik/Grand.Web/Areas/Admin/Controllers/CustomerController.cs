@@ -2598,7 +2598,7 @@ namespace Grand.Web.Areas.Admin.Controllers
             try
             {
                 byte[] bytes = _exportManager.ExportAllCustomersToXlsx(customers);
-                return File(bytes, "text/xls", "Prometeon_Customers.xlsx");
+                return File(bytes, "text/xls", "Federal_Customers.xlsx");
             }
             catch (Exception exc)
             {

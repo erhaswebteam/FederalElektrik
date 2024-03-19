@@ -797,9 +797,27 @@ namespace Grand.Web.Services
 
             IPagedList<Manufacturer> manufacturers;
             var model = new ManufacturerNavigationModel();
-
+            var catid = _httpContextAccessor.HttpContext.Request.Query["categoryId"].Count > 0 ? _httpContextAccessor.HttpContext.Request.Query["categoryId"][0].ToString() : "";
             string[] _tempUrl = _httpContextAccessor.HttpContext.Request.Path.Value.Split("/");
-            if (_tempUrl.Count() > 1)
+            if (string.IsNullOrEmpty(catid) == false)
+            {
+                Category _category = _categoryService.GetCategoryById(catid);
+                if (_category != null)
+                {
+                    var searchCategoryIds = new List<string>();
+                    searchCategoryIds.Add(_category.Id);
+                    var catList = GetChildCategoryIds(_category.Id);
+                    if (catList != null && catList.Count > 0)
+                    {
+                        foreach (var item in catList)
+                        {
+                            searchCategoryIds.Add(item);
+                        }
+                    }
+                    model = GetManufacturesByCategoryId(searchCategoryIds, currentManufacturerId);
+                }
+            }
+            else if (_tempUrl.Count() > 1)
             {
                 string _seName = System.Net.WebUtility.UrlDecode(_tempUrl[1]);
                 Category _category = _categoryService.GetCategoryBySeName(_seName);
@@ -807,12 +825,12 @@ namespace Grand.Web.Services
                 {
                     var searchCategoryIds = new List<string>();
                     searchCategoryIds.Add(_category.Id);
-                    var catList = _categoryService.GetAllCategoriesByParentCategoryId(_category.Id);
+                    var catList = GetChildCategoryIds(_category.Id);
                     if (catList != null && catList.Count > 0)
                     {
                         foreach (var item in catList)
                         {
-                            searchCategoryIds.Add(item.Id);
+                            searchCategoryIds.Add(item);
                         }
                     }
                     model = GetManufacturesByCategoryId(searchCategoryIds, currentManufacturerId);
@@ -923,6 +941,18 @@ namespace Grand.Web.Services
                 }
             }
             //products
+            var catids = new List<string>();
+            if (!string.IsNullOrEmpty(command.CategoryId))
+            {
+                if (command.CategoryId.Split('-').Length > 0)
+                {
+                    catids.AddRange(command.CategoryId.Split('-'));
+                }
+                else
+                {
+                    catids.Add(command.CategoryId);
+                }
+            }
             IList<string> filterableSpecificationAttributeOptionIds;
             var products = _productService.SearchProducts(out filterableSpecificationAttributeOptionIds, false,
                 manufacturerId: manufacturer.Id,
@@ -933,7 +963,8 @@ namespace Grand.Web.Services
                 priceMax: maxPriceConverted,
                 orderBy: (ProductSortingEnum)command.OrderBy,
                 pageIndex: command.PageNumber - 1,
-                pageSize: command.PageSize);
+                pageSize: command.PageSize,
+                categoryIds: catids);
             model.Products = _productWebService.PrepareProductOverviewModels(products).ToList();
 
             model.PagingFilteringContext.LoadPagedList(products);

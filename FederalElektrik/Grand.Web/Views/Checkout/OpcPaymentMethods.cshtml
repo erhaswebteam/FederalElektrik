@@ -50,7 +50,7 @@
                     <div>
                         <p class="col-6" style="border: 1px solid #cccccc; background-color: #ebebeb; padding: 3px;">Sipariş Toplamı : <strong>@string.Format("{0:0,0}", Model.TotalPoint) Puan</strong></p>
                         <p class="col-6" style="border: 1px solid #cccccc; background-color: #ebebeb; padding: 3px;">Düşülecek Puan : <strong>@string.Format("{0:0,0}", BuyTotal) Puan</strong></p>
-                        <p class="col-6" style="border: 1px solid #cccccc; background-color: #ebebeb; padding: 3px;">Kartla Ödenecek Tutar : <strong>0 TL</strong></p>
+                       @* <p class="col-6" style="border: 1px solid #cccccc; background-color: #ebebeb; padding: 3px;">Kartla Ödenecek Tutar : <strong>0 TL</strong></p>*@
                         <div>
                             <input id="paymentmethod_1" type="range" name="paymentPoint" min="0" max="@string.Format("{0:0.00}", BuyTotal).Replace(",",".")" step="0" value="@string.Format("{0:0.00}", BuyTotal).Replace(",",".")" style="display:inline-block; visibility:hidden">
                             <input id="paymentmethod_2" type="radio" name="paymentmethod" value="Payments.PaymentOptions" checked="Payments.PaymentOptions" style="visibility:hidden">
@@ -67,7 +67,7 @@
             </div>
         </div>
     }
-    else if (!cheque)
+    @*else if (!cheque)
     {
         <div class="list-inline col-12 mt-2 mb-2 px-0" id="payment-method-block">
             <div class="col-12 method-name px-0">
@@ -90,8 +90,8 @@
                 </div>
             </div>
         </div>
-    }
-    @if (Model.CustomerMoney < Model.TotalPoint && cheque)
+    }*@
+    @if (Model.CustomerMoney < Model.TotalPoint)
     {
         <div class="col-12">
             <h5>Puan İle Ödeme</h5>
@@ -125,7 +125,7 @@
             </div>
         </div>
     </div>
-    @if (Model.CustomerMoney < Model.TotalPoint && cheque)
+    @if (Model.CustomerMoney < Model.TotalPoint)
     {
 
     }
@@ -150,7 +150,7 @@
                     PaymentMethod.init('#co-payment-method-form', '@(storeLocation)checkout/OpcSavePaymentMethod/');
                         ConfirmOrder.init('@(storeLocation)checkout/OpcConfirmOrder/', '@(storeLocation)checkout/completed/');
 </script>
-@if (Model.CustomerMoney < Model.TotalPoint && cheque)
+@if (Model.CustomerMoney < Model.TotalPoint)
 {
 
 }

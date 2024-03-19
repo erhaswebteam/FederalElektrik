@@ -62,7 +62,7 @@ namespace Grand.Services.Media
             int targetSize = 0,
             bool showDefaultPicture = true, 
             string storeLocation = null, 
-            PictureType defaultPictureType = PictureType.Entity);
+            PictureType defaultPictureType = PictureType.Entity, string pictureId="");
 
         /// <summary>
         /// Get a picture local path

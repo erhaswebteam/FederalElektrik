@@ -62,7 +62,7 @@ namespace Grand.Web.Models.Catalog
         /// Product sorting
         /// </summary>
         public string ViewMode { get; set; }
-        
+        public string CategoryId { get; set; }
 
         #endregion
 
