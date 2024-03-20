@@ -274,7 +274,7 @@
     </div>
 
     <div class="form-group form-check ml-4">
-        <input class="form-check-input radioButton" type="radio" asp-for="SelectedCompany" value="Real">
+        <input class="form-check-input radioButton" type="radio" checked asp-for="SelectedCompany" value="Real">
         <label class="form-check-label">
             @T("Address.Fields.RealCompany")
         </label>
@@ -428,8 +428,12 @@
         chooseSelectedCompany();
     });
 
+    let selectedValue = 'Real';
+    localStorage.setItem("selectedValueStorage", selectedValue);
+    chooseSelectedCompany(selectedValue);
+
     $('.radioButton').change(function () {
-        let selectedValue = $('input[name="ShippingNewAddress.SelectedCompany"]:checked').val();
+        let selectedValue = $('#@Html.IdFor(model => model.SelectedCompany):checked').val();
         localStorage.setItem("selectedValueStorage", selectedValue);
         chooseSelectedCompany(selectedValue);
     });

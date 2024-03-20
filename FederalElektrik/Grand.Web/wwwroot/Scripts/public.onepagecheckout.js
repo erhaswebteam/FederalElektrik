@@ -102,9 +102,29 @@ var Checkout = {
     }
 };
 
+function chooseSelectedCompany() {
+    var selectedValue = localStorage.getItem("selectedValueStorage");
+    if (selectedValue === "Legal") {
+        $('div#legalCompanyForm').css('display', 'contents');
+        $('div#realCompanyForm').css('display', 'none');
+        $('div.companyValidate').css('display', 'none');
+    }
+    else if (selectedValue === "Real") {
+        $('div#legalCompanyForm').css('display', 'none');
+        $('div#realCompanyForm').css('display', 'contents');
+        $('div.companyValidate').css('display', 'none');
+    }
+    else {
+        $('div#realCompanyForm').css('display', 'none');
+        $('div#legalCompanyForm').css('display', 'none');
+    }
+}
 
-
-
+//$('.radioButton').on('change', function () {
+//    let selectedValue = $('input[name="ShippingNewAddress.SelectedCompany"]:checked').val();
+//    localStorage.setItem("selectedValueStorage", selectedValue);
+//    chooseSelectedCompany(selectedValue);
+//});
 
 var Billing = {
     form: false,
@@ -116,11 +136,14 @@ var Billing = {
         this.saveUrl = saveUrl;
         this.disableBillingAddressCheckoutStep = disableBillingAddressCheckoutStep;
     },
-
+    
     newAddress: function (isNew) {
         if (isNew) {
             this.resetSelectedAddress();
             $('#billing-new-address-form').show();
+            let selectedValue = 'Real';
+            localStorage.setItem("selectedValueStorage", selectedValue);
+            chooseSelectedCompany(selectedValue);
         } else {
             $('#billing-new-address-form').hide();
         }

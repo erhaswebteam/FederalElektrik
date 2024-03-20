@@ -60,6 +60,7 @@
                         }
                 </script>
                 <div class="col-12 buttons pb-2 pt-2 px-0 my-0" id="billing-buttons-container">
+                    <input type="button" class="btn btn-info shipping-method-next-step-button" value="Yeni Adres Ekle" onclick="Billing.newAddress(true)" />
                     <input type="button" title="@T("Common.Continue")" class="btn btn-info new-address-next-step-button" onclick="Billing.save()" value="@T("Common.Continue")" />
                     <span class="please-wait" id="billing-please-wait" style="display: none;">@T("Common.LoadingNextStep")</span>
                 </div>
