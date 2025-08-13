@@ -13,6 +13,7 @@ using Grand.Services.Localization;
 using Grand.Services.Logging;
 using Grand.Services.Media;
 using Grand.Services.Orders;
+using Grand.Services.Points;
 using Grand.Services.Security;
 using Grand.Services.Seo;
 using Grand.Services.Tax;
@@ -54,6 +55,7 @@ namespace Grand.Web.Controllers
         private readonly MediaSettings _mediaSettings;
         private readonly ShoppingCartSettings _shoppingCartSettings;
         private readonly IGenericAttributeService _genericAttributeService;
+        private readonly IProcessService _processService;
         #endregion
 
         #region CTOR
@@ -77,7 +79,8 @@ namespace Grand.Web.Controllers
             IPictureService pictureService,
             ShoppingCartSettings shoppingCartSettings,
             MediaSettings mediaSettings,
-            IGenericAttributeService genericAttributeService)
+            IGenericAttributeService genericAttributeService,
+            IProcessService processService)
         {
             this._productService = productService;
             this._productReservationService = productReservationService;
@@ -99,6 +102,7 @@ namespace Grand.Web.Controllers
             this._mediaSettings = mediaSettings;
             this._shoppingCartSettings = shoppingCartSettings;
             this._genericAttributeService = genericAttributeService;
+            _processService = processService;
         }
 
         #endregion
@@ -149,7 +153,23 @@ namespace Grand.Web.Controllers
                     success = false,
                     message = "No product found with the specified ID"
                 });
-
+            var customer = _workContext.CurrentCustomer;
+            var cart = customer.ShoppingCartItems
+                .Where(sci => sci.ShoppingCartType == cartType)
+                .LimitPerStore(_storeContext.CurrentStore.Id)
+                .ToList();
+            var totals = _shoppingCartWebService.PrepareOrderTotals(cart, true);
+            var total = string.IsNullOrEmpty(totals.SubTotal) == false ? Convert.ToDecimal(totals.SubTotal.Split(' ').First().Replace(",", ".")) : 0m;
+            total += product.Price;
+            var point = _processService.GetCustomerActualPoint(_workContext.CurrentCustomer.Username);
+            if (point < total)
+            {
+                return Json(new
+                {
+                    success = false,
+                    message = "Bu ürünü sepete eklemek için puanınız yeterli değildir."
+                });
+            }
             //we can add only simple products
             if (product.ProductType != ProductType.SimpleProduct)
             {
@@ -199,7 +219,7 @@ namespace Grand.Web.Controllers
                 });
             }
 
-            var customer = _workContext.CurrentCustomer;
+           
             //#region quota
             //var _productQuota = _workContext.CurrentCustomer.GenericAttributes.Where(x => x.Key == product.Id).FirstOrDefault();
             //if (_productQuota == null)
@@ -289,10 +309,7 @@ namespace Grand.Web.Controllers
 
             //get standard warnings without attribute validations
             //first, try to find existing shopping cart item
-            var cart = customer.ShoppingCartItems
-                .Where(sci => sci.ShoppingCartType == cartType)
-                .LimitPerStore(_storeContext.CurrentStore.Id)
-                .ToList();
+            
             var shoppingCartItem = _shoppingCartService.FindShoppingCartItemInTheCart(cart, cartType, product.Id);
             //if we already have the same product in the cart, then use the total quantity to validate
             var quantityToValidate = shoppingCartItem != null ? shoppingCartItem.Quantity + quantity : quantity;
@@ -305,6 +322,7 @@ namespace Grand.Web.Controllers
                     Quantity = quantityToValidate
                 },
                 product, false);
+           
             if (addToCartWarnings.Any())
             {
                 //cannot be added to the cart
@@ -492,7 +510,22 @@ namespace Grand.Web.Controllers
                     message = "Auction products couldn't be added to the wishlist"
                 });
             }
-
+            var cart1 = _workContext.CurrentCustomer.ShoppingCartItems
+                   .Where(x => x.ShoppingCartType == ShoppingCartType.ShoppingCart)
+                   .LimitPerStore(_storeContext.CurrentStore.Id)
+                   .ToList();
+            var totals = _shoppingCartWebService.PrepareOrderTotals(cart1, true);
+            var total = string.IsNullOrEmpty(totals.SubTotal) == false ? Convert.ToDecimal(totals.SubTotal.Split(' ').First().Replace(",", ".")) : 0m;
+            total += product.Price;
+            var point = _processService.GetCustomerActualPoint(_workContext.CurrentCustomer.Username);
+            if (point < total)
+            {
+                return Json(new
+                {
+                    success = false,
+                    message = "Bu ürünü sepete eklemek için puanınız yeterli değildir."
+                });
+            }
             #region Update existing shopping cart item?
             string updatecartitemid = "";
             foreach (string formKey in form.Keys)
@@ -768,7 +801,7 @@ namespace Grand.Web.Controllers
             }
 
             #region Return result
-
+            
             if (addToCartWarnings.Any())
             {
                 //cannot be added to the cart/wishlist

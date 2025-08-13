@@ -121,18 +121,18 @@ namespace Grand.Plugin.Customer.InsertAndPointProcess.Controllers
                     for (int rowIterator = 2; rowIterator <= noOfRow; rowIterator++)
                     {
                         Grand.Core.Domain.Customers.Customer cus;
-                        string _username = workSheet.Cells[rowIterator, 1].Value.ToString().Trim();
+                        string _username = workSheet.Cells[rowIterator, 1].Value.ToString().Trim().Replace(" ","");
                         decimal point = workSheet.Cells[rowIterator, 2].Value != null ? decimal.Parse(workSheet.Cells[rowIterator, 2].Value.ToString().Trim()) : 0;
-                        //string _password = "PrM22TN34K" + rowIterator.ToString();
-                        //string firstName = "";
-                        //string lastName = "";
-                        //string unvan = workSheet.Cells[rowIterator, 2].Value != null ? workSheet.Cells[rowIterator, 2].Value.ToString().Trim() : string.Empty;
-                        //if (!string.IsNullOrEmpty(unvan))
-                        //{
-                        //    firstName = unvan.Split(' ').FirstOrDefault();
-                        //    lastName = String.Join(" ", unvan.Split(' ').Skip(1));
-                        //}
-                        //string _email = workSheet.Cells[rowIterator, 1].Value.ToString().Trim();
+                        string _password = "415263";
+                        string firstName = "";
+                        string lastName = "";
+                        string unvan = workSheet.Cells[rowIterator, 4].Value != null ? workSheet.Cells[rowIterator, 4].Value.ToString().Trim() : string.Empty;
+                        if (!string.IsNullOrEmpty(unvan))
+                        {
+                            firstName = unvan.Split(' ').FirstOrDefault();
+                            lastName = String.Join(" ", unvan.Split(' ').Skip(1));
+                        }
+                        string _email = workSheet.Cells[rowIterator, 3].Value.ToString().Trim();
                         //string firstName = workSheet.Cells[rowIterator, 6].Value != null ? workSheet.Cells[rowIterator, 6].Value.ToString().Trim() : string.Empty;
                         //string lastname = workSheet.Cells[rowIterator, 7].Value != null ? workSheet.Cells[rowIterator, 7].Value.ToString().Trim() : string.Empty;
                         //string role = workSheet.Cells[rowIterator, 2].Value != null ? workSheet.Cells[rowIterator, 2].Value.ToString().Trim() : string.Empty;
@@ -145,64 +145,6 @@ namespace Grand.Plugin.Customer.InsertAndPointProcess.Controllers
                         cus = mongoDBRepository.Table.Where(x => x.Username == _username).FirstOrDefault();
                         if (cus != null)
                         {
-                            if (point > 0)
-                            {
-                                Process _proc = new Process()
-                                {
-                                    Description = DateTime.Now.ToShortDateString() + " puan yükleme.",
-                                    OrderGuid = new Guid(),
-                                    OrderNumber = 0,
-                                    CreatedOnUtc = DateTime.UtcNow,
-                                    Point = point,
-                                    TypeId = (int)ProcessType.Earn,
-                                    Username = _username
-                                };
-                                _processService.Insert(_proc);
-                                var phone= cus.GenericAttributes.Where(x => x.Key == "Phone").FirstOrDefault()?.Value;
-
-                                if (string.IsNullOrEmpty(phone) == false)
-                                {
-                                    var last = "Degerli kullanicimiz,\nHakedis puanlariniz hesaplariniza yuklenmistir.\nIyi alisverisler dileriz.\nEmail:info@promagaza.com\nMusteri destek hatti:0216 213 03 14";
-                                    PassSendSMS(phone, last);
-                                }
-                            }
-                        }
-                        else if (cus == null)
-                        {
-                            //cus = new Grand.Core.Domain.Customers.Customer()
-                            //{
-                            //    CustomerGuid = Guid.NewGuid(),
-                            //    Username = _username,
-                            //    Email = _email,
-                            //    Password = _password,
-                            //    PasswordFormat = PasswordFormat.Clear,
-                            //    CreatedOnUtc = DateTime.Now,
-                            //    Deleted = false,
-                            //    Active = true,
-                            //    IsHasOrders = false
-                            //};
-
-                            ////Role
-                            //cus.CustomerRoles.Add(_customerService.GetCustomerRoleBySystemName(SystemCustomerRoleNames.Registered));
-
-                            //cus.CustomerRoles.Add(_customerService.GetCustomerRoleBySystemName("OutsourceFilo"));
-
-                            //cus.GenericAttributes.Add(new GenericAttribute() { Key = SystemCustomerAttributeNames.FirstName, Value = firstName, StoreId = string.Empty });
-
-                            //cus.GenericAttributes.Add(new GenericAttribute() { Key = SystemCustomerAttributeNames.LastName, Value = lastName, StoreId = string.Empty });
-
-                            //cus.GenericAttributes.Add(new GenericAttribute() { Key = SystemCustomerAttributeNames.Company, Value = "", StoreId = string.Empty });
-
-                            //cus.GenericAttributes.Add(new GenericAttribute() { Key = "SatisYoneticisi", Value = "", StoreId = string.Empty });
-
-                            //cus.GenericAttributes.Add(new GenericAttribute() { Key = SystemCustomerAttributeNames.Phone, Value = phone, StoreId = string.Empty });
-
-                            //cus.GenericAttributes.Add(new GenericAttribute() { Key = "Bolge", Value = bolge, StoreId = string.Empty });
-
-                            //////Insert Customer
-                            //mongoDBRepository.Insert(cus);
-
-                            //////Puan Yüklemesi
                             //if (point > 0)
                             //{
                             //    Process _proc = new Process()
@@ -216,7 +158,65 @@ namespace Grand.Plugin.Customer.InsertAndPointProcess.Controllers
                             //        Username = _username
                             //    };
                             //    _processService.Insert(_proc);
+                            //    var phone= cus.GenericAttributes.Where(x => x.Key == "Phone").FirstOrDefault()?.Value;
+
+                            //    if (string.IsNullOrEmpty(phone) == false)
+                            //    {
+                            //        var last = "Degerli kullanicimiz,\nHakedis puanlariniz hesaplariniza yuklenmistir.\nIyi alisverisler dileriz.\nEmail:info@promagaza.com\nMusteri destek hatti:0216 213 03 14";
+                            //        PassSendSMS(phone, last);
+                            //    }
                             //}
+                        }
+                        else if (cus == null)
+                        {
+                            cus = new Grand.Core.Domain.Customers.Customer()
+                            {
+                                CustomerGuid = Guid.NewGuid(),
+                                Username = _username,
+                                Email = _email,
+                                Password = _password,
+                                PasswordFormat = PasswordFormat.Clear,
+                                CreatedOnUtc = DateTime.Now,
+                                Deleted = false,
+                                Active = true,
+                                IsHasOrders = false
+                            };
+
+                            //Role
+                            cus.CustomerRoles.Add(_customerService.GetCustomerRoleBySystemName(SystemCustomerRoleNames.Registered));
+
+                            //cus.CustomerRoles.Add(_customerService.GetCustomerRoleBySystemName("OutsourceFilo"));
+
+                            cus.GenericAttributes.Add(new GenericAttribute() { Key = SystemCustomerAttributeNames.FirstName, Value = firstName, StoreId = string.Empty });
+
+                            cus.GenericAttributes.Add(new GenericAttribute() { Key = SystemCustomerAttributeNames.LastName, Value = lastName, StoreId = string.Empty });
+
+                            //cus.GenericAttributes.Add(new GenericAttribute() { Key = SystemCustomerAttributeNames.Company, Value = "", StoreId = string.Empty });
+
+                            //cus.GenericAttributes.Add(new GenericAttribute() { Key = "SatisYoneticisi", Value = "", StoreId = string.Empty });
+
+                            //cus.GenericAttributes.Add(new GenericAttribute() { Key = SystemCustomerAttributeNames.Phone, Value = phone, StoreId = string.Empty });
+
+                            //cus.GenericAttributes.Add(new GenericAttribute() { Key = "Bolge", Value = bolge, StoreId = string.Empty });
+
+                            //////Insert Customer
+                            mongoDBRepository.Insert(cus);
+
+                            //////Puan Yüklemesi
+                            if (point > 0)
+                            {
+                                Process _proc = new Process()
+                                {
+                                    Description = DateTime.Now.ToShortDateString() + " puan yükleme.",
+                                    OrderGuid = new Guid(),
+                                    OrderNumber = 0,
+                                    CreatedOnUtc = DateTime.UtcNow,
+                                    Point = point,
+                                    TypeId = (int)ProcessType.Earn,
+                                    Username = _username
+                                };
+                                _processService.Insert(_proc);
+                            }
 
                             //StringBuilder msg = new StringBuilder();
                             //msg.Append("Degerli Bayimiz;\n");
@@ -324,12 +324,12 @@ namespace Grand.Plugin.Customer.InsertAndPointProcess.Controllers
 
                             cus.GenericAttributes.Add(new GenericAttribute() { Key = SystemCustomerAttributeNames.LastName, Value = lastname, StoreId = string.Empty });
 
-                            cus.GenericAttributes.Add(new GenericAttribute() { Key = SystemCustomerAttributeNames.Company, Value = company, StoreId = string.Empty });
+                            //cus.GenericAttributes.Add(new GenericAttribute() { Key = SystemCustomerAttributeNames.Company, Value = company, StoreId = string.Empty });
 
-                            cus.GenericAttributes.Add(new GenericAttribute() { Key = SystemCustomerAttributeNames.VatNumber, Value = vatnumber, StoreId = string.Empty });
+                            //cus.GenericAttributes.Add(new GenericAttribute() { Key = SystemCustomerAttributeNames.VatNumber, Value = vatnumber, StoreId = string.Empty });
 
-                            cus.GenericAttributes.Add(new GenericAttribute() { Key = SystemCustomerAttributeNames.Phone, Value = phone, StoreId = string.Empty });
-                            cus.GenericAttributes.Add(new GenericAttribute() { Key = "RegisteredBy", Value = registeredBy, StoreId = string.Empty });
+                            //cus.GenericAttributes.Add(new GenericAttribute() { Key = SystemCustomerAttributeNames.Phone, Value = phone, StoreId = string.Empty });
+                            //cus.GenericAttributes.Add(new GenericAttribute() { Key = "RegisteredBy", Value = registeredBy, StoreId = string.Empty });
 
                             //Insert Customer
                             mongoDBRepository.Insert(cus);
@@ -352,7 +352,7 @@ namespace Grand.Plugin.Customer.InsertAndPointProcess.Controllers
                             //PassSendSMS(phone, msg.ToString());
 
                             //Email password send
-                            SendPass(cus.Id);
+                            //SendPass(cus.Id);
                         }
                        
                     }
