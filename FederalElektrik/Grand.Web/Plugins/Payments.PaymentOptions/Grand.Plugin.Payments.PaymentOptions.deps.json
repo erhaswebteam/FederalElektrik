@@ -3575,7 +3575,10 @@
           "System.Xml.XmlSerializer": "4.3.0"
         },
         "runtime": {
-          "Grand.Core.dll": {}
+          "Grand.Core.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "Grand.Data/1.0.0": {
@@ -3583,7 +3586,10 @@
           "Grand.Core": "1.0.0"
         },
         "runtime": {
-          "Grand.Data.dll": {}
+          "Grand.Data.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "Grand.Framework/1.0.0": {
@@ -3603,7 +3609,10 @@
           "System.Security.AccessControl": "5.0.0"
         },
         "runtime": {
-          "Grand.Framework.dll": {}
+          "Grand.Framework.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "Grand.Services/1.0.0": {
@@ -3626,7 +3635,10 @@
           "iTextSharp.LGPLv2.Core": "1.4.4"
         },
         "runtime": {
-          "Grand.Services.dll": {}
+          "Grand.Services.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "Grand.Web/1.0.0": {
@@ -3644,7 +3656,10 @@
           "System.IdentityModel.Tokens.Jwt": "6.16.0"
         },
         "runtime": {
-          "Grand.Web.dll": {}
+          "Grand.Web.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "IPara.DeveloperPortal.Core/1.0.0.0": {

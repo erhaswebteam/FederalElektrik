@@ -22,9 +22,9 @@
         <div class="btn-group dropdown">
             <a class="nav-link dropdown-toggle">
                 <span class="cart-label align-self-center">
-                    <span class="fa fa-shopping-cart"></span>
+                    <span class="fa fa-shopping-cart" style="color:black"></span>
                 </span>
-                <span class="d-none d-lg-block cart-name">
+                <span class="d-none d-lg-block cart-name" style="color:black">
                     @T("ShoppingCart")
                 </span>
                 <span class="cart-qty">@T("ShoppingCart.HeaderQuantity", Model.ShoppingCartItems)</span>
@@ -40,15 +40,15 @@
 {
     <li class="nav-item">
         <a class="nav-link ico-account d-none d-lg-flex" href="@Url.RouteUrl("CustomerInfo")">
-            <span class="align-self-center"><span class="fa fa-user"></span></span>
-            <span class="d-none d-lg-block">@T("Account.MyAccount")</span>
+            <span class="align-self-center"><span class="fa fa-user" style="color:black"></span></span>
+            <span class="d-none d-lg-block" style="color:black">@T("Account.MyAccount")</span>
         </a>
     </li>
 
     <li class="nav-item col d-flex d-lg-none align-self-start" id="mobile-hl-opener">
         <a class="ico-account nav-link d-flex justify-content-center" href="@Url.RouteUrl("CustomerInfo")">
-            <span class="align-self-center"><span class="fa fa-user"></span></span>
-            <span class="d-none d-lg-block">@T("Account.MyAccount")</span>
+            <span class="align-self-center"><span class="fa fa-user" style="color:black"></span></span>
+            <span class="d-none d-lg-block" style="color:black">@T("Account.MyAccount")</span>
             <span class="d-lg-none d-block text-muted mt-1 mobile-desc">@T("Account.MyAccount")</span>
         </a>
     </li>
@@ -56,11 +56,11 @@
 }
 else
 {
-    <li class="nav-item d-none d-lg-block"><a class="nav-link ico-login" href="@Url.RouteUrl("Login")"><span class="fa fa-user align-self-center"></span><span class="d-none d-lg-block">@T("Account.Login")</span></a></li>
+    <li class="nav-item d-none d-lg-block"><a class="nav-link ico-login" href="@Url.RouteUrl("Login")"><span class="fa fa-user align-self-center"></span><span class="d-none d-lg-block" style="color:black">@T("Account.Login")</span></a></li>
     <li class="nav-item col d-flex d-lg-none justify-content-center align-self-start">
         <a class="nav-link ico-login admin" href="@Url.RouteUrl("Login")">
             <span class="fa fa-user align-self-center"></span>
-            <span class="d-none d-lg-block">@T("Account.Login")</span>
+            <span class="d-none d-lg-block" style="color:black">@T("Account.Login")</span>
             <span class="d-lg-none d-block text-muted mt-1 mobile-desc">@T("Account.Login")</span>
         </a>
     </li>
@@ -80,15 +80,15 @@ else
 @if (Model.IsAuthenticated)
 {<li class="nav-item col d-flex d-lg-none align-self-start">
         <a class="nav-link ico-logout" href="@Url.RouteUrl("Logout")">
-            <span class="align-self-center"><span class="fa fa-power-off"></span></span>
-            <span class="d-none d-lg-block">@T("Account.Logout")</span>
+            <span class="align-self-center"><span class="fa fa-power-off" style="color:black"></span></span>
+            <span class="d-none d-lg-block" style="color:black">@T("Account.Logout")</span>
             <span class="d-lg-none d-block text-muted mt-1 mobile-desc">@T("Account.Logout")</span>
         </a>
     </li>
     <li class="nav-item d-none d-lg-block">
         <a class="nav-link ico-logout" href="@Url.RouteUrl("Logout")">
-            <span class="align-self-center"><span class="fa fa-power-off"></span></span>
-            <span class="d-none d-lg-block">@T("Account.Logout")</span>
+            <span class="align-self-center"><span class="fa fa-power-off" style="color:black"></span></span>
+            <span class="d-none d-lg-block" style="color:black">@T("Account.Logout")</span>
         </a>
     </li>
 

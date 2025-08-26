@@ -2,7 +2,7 @@
 
 <style type="text/css">
     .addToCartButton {
-        background-color: #283d4e;
+        background-color: #FF5A00 !important;
         color: white;
     }
 
@@ -97,7 +97,7 @@
                     });
                 });
             </script>
-            <button type="button" id="add-to-cart-button-@Model.ProductId" class="btn addToCartButton add-to-cart-button d-inline-flex" data-productid="@Model.ProductId" onclick="AjaxCart.addproducttocart_details('@Url.RouteUrl("AddProductToCart-Details", new { productId = Model.ProductId, shoppingCartTypeId = (int)ShoppingCartType.ShoppingCart })', '#product-details-form');return false;">
+            <button type="button" id="add-to-cart-button-@Model.ProductId" style="color:#FF7D29" class="btn addToCartButton add-to-cart-button d-inline-flex" data-productid="@Model.ProductId" onclick="AjaxCart.addproducttocart_details('@Url.RouteUrl("AddProductToCart-Details", new { productId = Model.ProductId, shoppingCartTypeId = (int)ShoppingCartType.ShoppingCart })', '#product-details-form');return false;">
                 <span class="fa fa-shopping-cart d-sm-block"></span><span class="d-lg-block d-none">@addToCartText</span>
             </button>
     }

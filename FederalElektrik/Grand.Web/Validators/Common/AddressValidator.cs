@@ -172,31 +172,36 @@ namespace Grand.Web.Validators.Common
             }
 
             // İlk rakamın sıfır olması gerekiyor.
-            if (taxNumber[0] != '0')
+            if (taxNumber[0] == '0')
             {
                 return false;
+            }
+            foreach (char digit in taxNumber)
+            {
+                if (!char.IsDigit(digit))
+                    return false;
             }
 
             // Son rakamın çift olması gerekiyor.
-            int lastDigit = int.Parse(taxNumber[9].ToString());
-            if (lastDigit % 2 != 0)
-            {
-                return false;
-            }
+            //int lastDigit = int.Parse(taxNumber[9].ToString());
+            //if (lastDigit % 2 != 0)
+            //{
+            //    return false;
+            //}
 
             // Vergi numarasının kontrol basamağı doğru olmalıdır.
-            int[] taxNumberArray = new int[10];
-            for (int i = 0; i < 10; i++)
-            {
-                taxNumberArray[i] = int.Parse(taxNumber[i].ToString());
-            }
-            int controlDigit = (7 * (taxNumberArray[0] + taxNumberArray[2] + taxNumberArray[4] + taxNumberArray[6]))
-                               - (3 * (taxNumberArray[1] + taxNumberArray[3] + taxNumberArray[5] + taxNumberArray[7]));
-            controlDigit = controlDigit % 10;
-            if (controlDigit != taxNumberArray[8])
-            {
-                return false;
-            }
+            //int[] taxNumberArray = new int[10];
+            //for (int i = 0; i < 10; i++)
+            //{
+            //    taxNumberArray[i] = int.Parse(taxNumber[i].ToString());
+            //}
+            //int controlDigit = (7 * (taxNumberArray[0] + taxNumberArray[2] + taxNumberArray[4] + taxNumberArray[6]))
+            //                   - (3 * (taxNumberArray[1] + taxNumberArray[3] + taxNumberArray[5] + taxNumberArray[7]));
+            //controlDigit = controlDigit % 10;
+            //if (controlDigit != taxNumberArray[8])
+            //{
+            //    return false;
+            //}
 
             // Tüm kontroller geçildi, vergi numarası doğru.
             return true;

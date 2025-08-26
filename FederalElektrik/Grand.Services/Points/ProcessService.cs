@@ -42,12 +42,26 @@ namespace Grand.Services.Points
 
         public virtual decimal GetCustomerEarnPoint(string username)
         {
-            return _processRepository.Table.Where(x => x.Username == username && x.TypeId == (int)ProcessType.Earn).Sum(x => x.Point);
+            decimal point = 0;
+            DateTime startDate = new DateTime(2025, 3, 27);
+            point = _processRepository.Table
+            .Where(x => x.Username == username
+                && x.TypeId == (int)ProcessType.Earn
+                && x.CreatedOnUtc >= startDate).Sum(x => x.Point);
+            return point;
         }
 
         public virtual decimal GetCustomerSpend(string username)
         {
-            return _processRepository.Table.Where(x => x.Username == username && x.TypeId == (int)ProcessType.Spend).Sum(x => x.Point);
+            decimal point = 0;
+            DateTime startDate = new DateTime(2025, 3, 25);
+
+            point = _processRepository.Table
+            .Where(x => x.Username == username
+            && x.TypeId == (int)ProcessType.Spend
+            && x.CreatedOnUtc >= startDate).Sum(x => x.Point);
+
+            return point;
         }
 
         public virtual decimal GetCustomerTransferEarnPoint(string username)

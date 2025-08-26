@@ -258,7 +258,6 @@ var Shipping = {
             error: Checkout.ajaxFailure
         });
 
-        localStorage.removeItem("selectedValueStorage");
     },
 
     resetLoadWaiting: function () {

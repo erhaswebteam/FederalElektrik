@@ -1288,26 +1288,26 @@ pagination .pagination a:not([href]) {
 	min-height: 650px;
 }
 .block-account-navigation .list li a {
-    display: block;
-    white-space: nowrap;
-    background: #343a40;
-    color: #fff !important;
-    border-bottom-left-radius: .25rem;
-    border-top-left-radius: .25rem;
-    font-size: 14px;
-    text-transform: uppercase;
-    padding: 0 15px 0 40px;
-    line-height: 50px;
-    height: 50px;
-    font-weight: 400;
-    position: absolute;
-    right: 0;
-    width: 100%;
-    text-align: right;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    /* transform: translateX(calc(100% - 50px)); */
-    transition: all .5s ease;
+	display: block;
+	white-space: nowrap;
+	background: #FF7D29;
+	color: #fff !important;
+	border-bottom-left-radius: .25rem;
+	border-top-left-radius: .25rem;
+	font-size: 14px;
+	text-transform: uppercase;
+	padding: 0 15px 0 40px;
+	line-height: 50px;
+	height: 50px;
+	font-weight: 400;
+	position: absolute;
+	right: 0;
+	width: 100%;
+	text-align: right;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+	/* transform: translateX(calc(100% - 50px)); */
+	transition: all .5s ease;
 }
 .block-account-navigation .list li {
 	position: relative;

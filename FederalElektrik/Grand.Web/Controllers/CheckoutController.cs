@@ -1221,6 +1221,7 @@ namespace Grand.Web.Controllers
                     }
 
                     address.VatNumber = model.NewAddress.IdentityNumber;
+                 
                     _workContext.CurrentCustomer.BillingAddress = address;
                     address.CustomerId = _workContext.CurrentCustomer.Id;
                     _customerService.UpdateBillingAddress(address);
@@ -1356,6 +1357,7 @@ namespace Grand.Web.Controllers
                         throw new Exception("Address can't be loaded");
 
                     address.VatNumber = model.NewAddress.IdentityNumber;
+              
                     _workContext.CurrentCustomer.ShippingAddress = address;
                     address.CustomerId = _workContext.CurrentCustomer.Id;
                     _customerService.UpdateShippingAddress(address);
@@ -1424,6 +1426,7 @@ namespace Grand.Web.Controllers
                     }
 
                     address.VatNumber = model.NewAddress.IdentityNumber;
+                 
                     _workContext.CurrentCustomer.ShippingAddress = address;
                     address.CustomerId = _workContext.CurrentCustomer.Id;
                     _customerService.UpdateShippingAddress(address);

@@ -1724,10 +1724,10 @@ namespace Grand.Web.Areas.Admin.Controllers
             switch (paymentSystemName)
             {
                 case "Rewards.RewardOperations":
-                    result = "Puan";
+                    result = "Kredi Kartı";
                     break;
                 case "Payments.PaymentOptions":
-                    result = "Kredi Kartı";
+                    result = "puan";
                     break;
                 case "Payments.PaymentOptions.Havale":
                     result = "Havale";
