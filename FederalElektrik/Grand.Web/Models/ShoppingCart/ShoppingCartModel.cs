@@ -43,7 +43,8 @@ namespace Grand.Web.Models.ShoppingCart
         public OrderReviewDataModel OrderReviewData { get; set; }
 
         public IList<string> ButtonPaymentMethodViewComponentNames { get; set; }
-
+        public decimal CartTotal { get; set; }
+        public decimal Point { get; set; }
         #region Nested Classes
 
         public partial class ShoppingCartItemModel : BaseGrandEntityModel

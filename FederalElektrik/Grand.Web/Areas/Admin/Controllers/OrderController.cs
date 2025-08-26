@@ -1584,7 +1584,7 @@ namespace Grand.Web.Areas.Admin.Controllers
                     _orderProduct.UserRole = GetCustomerRolesNames(cus.CustomerRoles.ToList());
                     _orderProduct.SKU = _sku;
                     _orderProduct.CreatedDate = item.CreatedOnUtc.ToString(string.Format("dd/MM/yyyy HH:mm:ss"));
-                    _orderProduct.PaymentType = OrderPaymentName(item.PaymentMethodSystemName);
+                    _orderProduct.PaymentType = "";//OrderPaymentName(item.PaymentMethodSystemName);
                     _orderProduct.OrderStatus = OrderStatusName(item.OrderStatusId);
                     _orderProduct.ShippingStatus = ShipmentStatusName(item.ShippingStatusId);
                     orderProductList.Add(_orderProduct);
