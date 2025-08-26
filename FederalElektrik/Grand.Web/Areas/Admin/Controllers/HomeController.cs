@@ -114,17 +114,10 @@ namespace Grand.Web.Areas.Admin.Controllers
             var model = PrepareActivityModel();
             return PartialView(model);
         }
-<<<<<<< HEAD
         public IActionResult GoogleAnalytics()
         {
 
             return View();
-=======
-        public IActionResult GoogleAnalytics()
-        {
-
-            return View();
->>>>>>> 1621c55b2a0cd1e64b0fc44f6e45083f20943396
         }
 
         #endregion
