@@ -3,7 +3,10 @@
     "additionalProbingPaths": [
       "C:\\Users\\enis.eftekin\\.dotnet\\store\\|arch|\\|tfm|",
       "C:\\Users\\enis.eftekin\\.nuget\\packages",
-      "C:\\Program Files\\DevExpress 22.2\\Components\\Offline Packages"
+      "C:\\Program Files\\DevExpress 22.2\\Components\\Offline Packages",
+      "C:\\Program Files\\DevExpress 23.2\\Components\\Offline Packages",
+      "C:\\Program Files\\DevExpress 24.2\\Components\\Offline Packages",
+      "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
     ]
   }
 }
